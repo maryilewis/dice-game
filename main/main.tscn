@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://do37q1j0i5oru"]
+[gd_scene load_steps=6 format=3 uid="uid://do37q1j0i5oru"]
 
 [ext_resource type="PackedScene" uid="uid://c2is5hi4k3ag8" path="res://shared ui elements/modal.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://g1tteb6ctg3h" path="res://main/main.gd" id="1_c651c"]
 [ext_resource type="PackedScene" uid="uid://d25seijf62h21" path="res://map/map.tscn" id="3_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://dy3xdw2akmucu" path="res://status bar/status_bar.tscn" id="4_kfbq2"]
+[ext_resource type="Texture2D" uid="uid://dosmvqgay6ja6" path="res://images/Lark Meadows.png" id="5_3wy1v"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -15,6 +16,17 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_c651c")
+
+[node name="InstructionsModal_MarginContainer_VBoxContainer#Label" type="Label" parent="."]
+layout_mode = 0
+size_flags_vertical = 0
+text = "You are journeying to the castle of the nefarious ice queen, but she knows you are coming and she is gathering her forces.
+
+You have 10 days to reach her castle with the element of surprise. on the 11th day, she will come for you in her full strength.
+
+Each move takes 1 day. Defeat monsters and grow stronger. The closer you are to the castle, the better the loot.
+
+If you die, you teleport back to start."
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -39,24 +51,30 @@ unique_name_in_owner = true
 [node name="InstructionsModal" parent="." instance=ExtResource("1_53q0u")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = -491.0
-offset_top = -150.0
-offset_right = 491.0
-offset_bottom = 150.0
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+body_text = "You're Lark Meadows, gun for hire.
+You've been retained to take out the nefarious Saville Gang, who ar ehold up in the mountains of Dice Canyon.
+Word has it, if you don't come to them by the 8th day, they'll get the jump on you.
+You have seven days to gather your resources and prepare. There are criminals a-plenty in dice canyon."
 
-[node name="Label" type="Label" parent="InstructionsModal/MarginContainer/VBoxContainer" index="0"]
+[node name="BodyLabel" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "You're Lark Meadows, gun for hire.
+You've been retained to take out the nefarious Saville Gang, who ar ehold up in the mountains of Dice Canyon.
+Word has it, if you don't come to them by the 8th day, they'll get the jump on you.
+You have seven days to gather your resources and prepare. There are criminals a-plenty in dice canyon."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer" index="1"]
 layout_mode = 2
-size_flags_vertical = 0
-text = "You are journeying to the castle of the nefarious ice queen, but she knows you are coming and she is gathering her forces.
 
-You have 10 days to reach her castle with the element of surprise. on the 11th day, she will come for you in her full strength.
-
-Each move takes 1 day. Defeat monsters and grow stronger. The closer you are to the castle, the better the loot.
-
-If you die, you teleport back to start."
-
-[node name="No" parent="InstructionsModal/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+texture = ExtResource("5_3wy1v")
+expand_mode = 1
+stretch_mode = 2
 
 [connection signal="selection_made" from="Map" to="." method="_on_map_selection_made"]
 [connection signal="ok_pressed" from="InstructionsModal" to="." method="_on_instructions_modal_ok_pressed"]

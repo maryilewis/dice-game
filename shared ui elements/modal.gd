@@ -5,7 +5,7 @@ signal cancel_pressed
 signal ok_pressed
 
 
-@export var body_text: String:
+@export_multiline var body_text: String:
 	set(value):
 		body_text = value
 		%BodyLabel.text = value
