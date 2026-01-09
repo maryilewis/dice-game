@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy3xdw2akmucu"]
+
+[ext_resource type="Script" uid="uid://penqq5n3b4nw" path="res://status bar/status_bar.gd" id="1_a6a16"]
+
+[node name="Status Bar" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_a6a16")
+
+[node name="HP" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Health: 30/30"
+
+[node name="Gold" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gold: 0"
+
+[node name="Days" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10 Days until the bad guy comes for you"

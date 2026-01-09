@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://br8030cxjs20k"]
+
+[node name="Enemy" type="Node2D"]
+
+[node name="Name" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HP" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0

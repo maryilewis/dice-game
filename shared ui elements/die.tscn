@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7tillw5s46vh"]
+
+[ext_resource type="Script" uid="uid://cncfkenrqeeoj" path="res://shared ui elements/die.gd" id="1_4wbct"]
+
+[node name="IndividualDie" type="PanelContainer"]
+custom_minimum_size = Vector2(70, 70)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_4wbct")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="ValueButton" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

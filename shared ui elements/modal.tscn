@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2is5hi4k3ag8"]
+
+[ext_resource type="Script" uid="uid://chndd51m7know" path="res://shared ui elements/modal.gd" id="1_ma22n"]
+[ext_resource type="Theme" uid="uid://cct5jg7sqwnxx" path="res://theme/theme.tres" id="1_tuuci"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuuci"]
+bg_color = Color(0.40392157, 0.5686275, 0.52156866, 1)
+border_width_bottom = 8
+border_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdxgw"]
+bg_color = Color(0.8745098, 0.8392157, 0.7921569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Modal" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tuuci")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tuuci")
+script = ExtResource("1_ma22n")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdxgw")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BodyLabel" type="RichTextLabel" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ConfirmLabel" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+
+[node name="No" type="Button" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Yes" type="Button" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ok"
+
+[connection signal="pressed" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/No" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
