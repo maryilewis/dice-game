@@ -2,6 +2,7 @@ class_name DungeonVisual extends Node
 
 const DIE = preload("uid://b7tillw5s46vh")
 const ABILITY_SUMMARY = preload("uid://c4y33hfvqujok")
+const ABILITY_LIST_ITEM = preload("uid://bv2jb61ljkhrv")
 
 @export var player: Player
 @export var dungeon: Dungeon
@@ -17,10 +18,10 @@ func _ready():
 func _list_abilities():
 	print(player.abilities)
 	for ability in player.abilities:
-		var button = Button.new()
-		button.text = ability.display_name
-		button.pressed.connect(_select_ability.bind(ability))
-		%AbilityButtons.add_child(button)
+		var ability_button = ABILITY_LIST_ITEM.instantiate()
+		ability_button.ability = ability
+		ability_button.pressed.connect(_select_ability.bind(ability))
+		%AbilityButtons.add_child(ability_button)
 
 
 func _select_ability(ability: Ability):

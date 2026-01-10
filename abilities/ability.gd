@@ -1,3 +1,4 @@
+## Represents an instance of an ability
 @abstract
 class_name Ability extends Node
 
