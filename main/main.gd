@@ -7,7 +7,7 @@ var player: Player
 
 func _ready():
 	player = Player.new()
-	player.abilities = [ShortswordAbility.new(), DaggerAbility.new(), FlurryOfBlowsAbility.new()]
+	player.abilities = [BasicDamageAbility.new(), DaggerAbility.new(), FlurryOfBlowsAbility.new()]
 
 
 # TODO link player and status bar

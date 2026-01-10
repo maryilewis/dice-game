@@ -8,6 +8,10 @@ func _init():
 	target_type = TargetType.ALL_ENEMIES
 
 
+func check_dice_partial(dice_values: Array) -> bool:
+	return _all_match(dice_values)
+
+
 func check_dice(dice_values: Array) -> bool:
 	if len(dice_values) == number_of_dice and _all_match(dice_values):
 		return true

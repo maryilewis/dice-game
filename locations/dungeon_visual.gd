@@ -6,6 +6,7 @@ const ABILITY_SUMMARY = preload("uid://c4y33hfvqujok")
 @export var player: Player
 @export var dungeon: Dungeon
 var dice: Array[int] = []
+var visible_ability_summary: AbilitySummary
 
 
 func _ready():
@@ -23,9 +24,24 @@ func _list_abilities():
 
 
 func _select_ability(ability: Ability):
-	var ability_summary = ABILITY_SUMMARY.instantiate()
-	add_child(ability_summary)
-	ability_summary.set_ability(ability)
+	if visible_ability_summary != null:
+		_close_ability_summary()
+		if visible_ability_summary.ability == ability:
+			return
+
+	visible_ability_summary = ABILITY_SUMMARY.instantiate()
+	add_child(visible_ability_summary)
+	visible_ability_summary.set_ability(ability)
+	visible_ability_summary.die_removed.connect(_on_die_returned)
+	visible_ability_summary.close_requested.connect(_close_ability_summary)
+
+
+func _close_ability_summary():
+	print(_close_ability_summary)
+	if visible_ability_summary != null:
+		for value in visible_ability_summary.get_die_values():
+			_on_die_returned(value)
+		visible_ability_summary.queue_free()
 
 
 func _on_end_turn_button_pressed():
@@ -49,5 +65,16 @@ func _on_turn_start():
 		die.pressed.connect(_on_die_clicked.bind(die))
 
 
+func _on_die_returned(value: int):
+	print("returning", value)
+	for child: IndividualDie in %DiceContainer.get_children():
+		if child.value == null:
+			child.set_value(value)
+			return
+
+
 func _on_die_clicked(die: IndividualDie):
-	print(die.value)
+	if visible_ability_summary != null:
+		var sent = visible_ability_summary.add_die(die.value)
+		if sent:
+			die.clear_value()

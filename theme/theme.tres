@@ -1,6 +1,52 @@
-[gd_resource type="Theme" format=3 uid="uid://cct5jg7sqwnxx"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cct5jg7sqwnxx"]
+
+[ext_resource type="FontFile" uid="uid://dgre43iy6m0r8" path="res://fonts/talkco/Talkco.ttf" id="1_8ab6e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcjcl"]
+bg_color = Color(1, 0.84705883, 0.3764706, 1)
+border_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ab6e"]
+bg_color = Color(0.96862745, 0.69803923, 0.23137255, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ab6e"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrt0f"]
+bg_color = Color(0.8745098, 0.8392157, 0.7921569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yjuo"]
+bg_color = Color(0.8745098, 0.8392157, 0.7921569, 1)
 
 [resource]
+Button/colors/font_color = Color(0.12941177, 0.24313726, 0.28235295, 1)
+Button/colors/font_focus_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+Button/colors/font_hover_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+Button/colors/font_hover_pressed_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+Button/font_sizes/font_size = 24
+Button/styles/focus = SubResource("StyleBoxFlat_lcjcl")
+Button/styles/hover = SubResource("StyleBoxFlat_8ab6e")
+Button/styles/normal = SubResource("StyleBoxEmpty_8ab6e")
+HeaderLarge/font_sizes/font_size = 36
+HeaderLarge/fonts/font = ExtResource("1_8ab6e")
+HeaderMedium/fonts/font = ExtResource("1_8ab6e")
 Label/colors/font_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+Panel/styles/panel = SubResource("StyleBoxFlat_nrt0f")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_4yjuo")
 RichTextLabel/colors/default_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
 RichTextLabel/font_sizes/normal_font_size = 20

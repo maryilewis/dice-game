@@ -17,17 +17,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_c651c")
 
-[node name="InstructionsModal_MarginContainer_VBoxContainer#Label" type="Label" parent="."]
-layout_mode = 0
-size_flags_vertical = 0
-text = "You are journeying to the castle of the nefarious ice queen, but she knows you are coming and she is gathering her forces.
-
-You have 10 days to reach her castle with the element of surprise. on the 11th day, she will come for you in her full strength.
-
-Each move takes 1 day. Defeat monsters and grow stronger. The closer you are to the castle, the better the loot.
-
-If you die, you teleport back to start."
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -35,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="Status Bar" parent="VBoxContainer" instance=ExtResource("4_kfbq2")]
 layout_mode = 2
@@ -56,25 +46,18 @@ offset_top = -200.0
 offset_right = 300.0
 offset_bottom = 200.0
 body_text = "You're Lark Meadows, gun for hire.
-You've been retained to take out the nefarious Saville Gang, who ar ehold up in the mountains of Dice Canyon.
+You've been retained to take out the nefarious Saville Gang, who are holed up in the mountains of Dice Canyon.
 Word has it, if you don't come to them by the 8th day, they'll get the jump on you.
 You have seven days to gather your resources and prepare. There are criminals a-plenty in dice canyon."
 
-[node name="BodyLabel" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "You're Lark Meadows, gun for hire.
-You've been retained to take out the nefarious Saville Gang, who ar ehold up in the mountains of Dice Canyon.
-Word has it, if you don't come to them by the 8th day, they'll get the jump on you.
-You have seven days to gather your resources and prepare. There are criminals a-plenty in dice canyon."
-
-[node name="HBoxContainer" type="HBoxContainer" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer" index="1"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(400, 200)
-layout_mode = 2
+[node name="TextureRect" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
 texture = ExtResource("5_3wy1v")
-expand_mode = 1
-stretch_mode = 2
+
+[node name="BodyLabel" parent="InstructionsModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
+text = "You're Lark Meadows, gun for hire.
+You've been retained to take out the nefarious Saville Gang, who are holed up in the mountains of Dice Canyon.
+Word has it, if you don't come to them by the 8th day, they'll get the jump on you.
+You have seven days to gather your resources and prepare. There are criminals a-plenty in dice canyon."
 
 [connection signal="selection_made" from="Map" to="." method="_on_map_selection_made"]
 [connection signal="ok_pressed" from="InstructionsModal" to="." method="_on_instructions_modal_ok_pressed"]

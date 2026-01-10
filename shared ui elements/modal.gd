@@ -13,12 +13,8 @@ signal ok_pressed
 		return body_text
 
 
-@export var confirmation_text: String:
-	set(value):
-		confirmation_text = value
-		%ConfirmLabel.text = value
-	get:
-		return confirmation_text
+func _ready():
+	%Yes.grab_focus()
 
 
 func _on_no_pressed():
@@ -27,3 +23,8 @@ func _on_no_pressed():
 
 func _on_yes_pressed():
 	ok_pressed.emit()
+
+
+func _on_visibility_changed():
+	if %Yes.is_inside_tree() and visible:
+		%Yes.grab_focus()

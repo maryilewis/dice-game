@@ -1,9 +1,9 @@
-class_name ShortswordAbility extends Ability
+class_name BasicDamageAbility extends Ability
 
 var modifier: int = 1
 
 func _init():
-	display_name = "Shortsword"
+	display_name = "Called Shot"
 	description = "Cost: 1 die. Does x + " + str(modifier) + " damage."
 	uses_per_turn = 1 # 0 for infinite
 	number_of_dice = 1 # if an ability has infinite uses, it cannot have 0 cost

@@ -1,16 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7tillw5s46vh"]
+[gd_scene load_steps=4 format=3 uid="uid://b7tillw5s46vh"]
 
 [ext_resource type="Script" uid="uid://cncfkenrqeeoj" path="res://shared ui elements/die.gd" id="1_4wbct"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wbct"]
+bg_color = Color(0.69803923, 0.5803922, 0.36078432, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cv0lc"]
+bg_color = Color(1, 0.5882353, 0.078431375, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.5686275, 0.45882353, 0.20784314, 1)
+
 [node name="IndividualDie" type="PanelContainer"]
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(80, 80)
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4wbct")
 script = ExtResource("1_4wbct")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="ValueButton" type="Button" parent="MarginContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_cv0lc")
+
+[connection signal="pressed" from="MarginContainer/ValueButton" to="." method="_on_button_pressed"]

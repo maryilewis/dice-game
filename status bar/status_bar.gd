@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Control
 
 var hp: int
 var hp_max: int

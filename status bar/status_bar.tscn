@@ -1,26 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy3xdw2akmucu"]
+[gd_scene load_steps=3 format=3 uid="uid://dy3xdw2akmucu"]
 
+[ext_resource type="Theme" uid="uid://cct5jg7sqwnxx" path="res://theme/theme.tres" id="1_7evjc"]
 [ext_resource type="Script" uid="uid://penqq5n3b4nw" path="res://status bar/status_bar.gd" id="1_a6a16"]
 
-[node name="Status Bar" type="HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 21.0
 grow_horizontal = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_7evjc")
 script = ExtResource("1_a6a16")
 
-[node name="HP" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Status Bar" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="MarginContainer/Status Bar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Health: 30/30"
 
-[node name="Gold" type="Label" parent="."]
+[node name="Gold" type="Label" parent="MarginContainer/Status Bar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Gold: 0"
 
-[node name="Days" type="Label" parent="."]
+[node name="Days" type="Label" parent="MarginContainer/Status Bar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
