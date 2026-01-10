@@ -40,6 +40,7 @@ func set_target(enemy: Enemy):
 
 ## Array of ints
 func execute(dice_values: Array):
+	print(targets)
 	if target_type == TargetType.PLAYER:
 		targets = [player]
 	elif target_type == TargetType.ALL_ENEMIES:

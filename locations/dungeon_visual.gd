@@ -10,6 +10,12 @@ const ENEMY_VISUAL = preload("uid://br8030cxjs20k")
 @export var dungeon: Dungeon
 var dice: Array[int] = []
 var visible_ability_summary: AbilitySummary
+var selecting_targets: bool = false:
+	set(value):
+		selecting_targets = value
+		%ChooseTargetLabel.visible = value
+	get():
+		return selecting_targets
 
 
 func _ready():
@@ -22,12 +28,11 @@ func _show_enemies():
 	print(dungeon.enemies)
 	var enemy_index = 0
 	for enemy in dungeon.enemies:
-		print("Hi, ", enemy.display_name)
 		var vis = ENEMY_VISUAL.instantiate()
 		vis.enemy = enemy
 		%EnemySpots.get_child(enemy_index).add_child(vis)
 		enemy_index += 1
-		
+		vis.pressed.connect(_select_enemy.bind(vis))
 
 
 func _list_abilities():
@@ -50,11 +55,31 @@ func _select_ability(ability: Ability):
 	visible_ability_summary.set_ability(ability)
 	visible_ability_summary.die_removed.connect(_on_die_returned)
 	visible_ability_summary.close_requested.connect(_close_ability_summary)
-	visible_ability_summary.ability_activated.connect(_activate_ability.bind(visible_ability_summary))
+	visible_ability_summary.ability_activated.connect(_activate_ability)
 
 
-func _activate_ability(ability_summary: AbilitySummary):
-	ability_summary.ability.execute(ability_summary.get_die_values())
+func _activate_ability():
+	if visible_ability_summary == null:
+		return
+	if visible_ability_summary.ability.target_type != Ability.TargetType.ENEMY:
+		_complete_ability()
+	else:
+		selecting_targets = true
+		visible_ability_summary.hide()
+
+
+func _select_enemy(vis: EnemyVisual):
+	if !selecting_targets:
+		return
+	visible_ability_summary.ability.targets = [vis.enemy]
+	_complete_ability()
+	selecting_targets = false
+
+
+func _complete_ability():
+	if visible_ability_summary == null:
+		return
+	visible_ability_summary.ability.execute(visible_ability_summary.get_die_values())
 	visible_ability_summary.queue_free()
 	dice = []
 	for child: IndividualDie in %DiceContainer.get_children():
@@ -63,8 +88,10 @@ func _activate_ability(ability_summary: AbilitySummary):
 	# TODO update corresponding list item to reflect that an ability has been used
 
 
+# Cancel - close abilty without executing
 func _close_ability_summary():
 	print(_close_ability_summary)
+	selecting_targets = false
 	if visible_ability_summary != null:
 		for value in visible_ability_summary.get_die_values():
 			_on_die_returned(value)

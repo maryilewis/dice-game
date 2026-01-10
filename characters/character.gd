@@ -9,10 +9,8 @@ var armor: int = 0
 var block: int = 0
 
 
-
 func turn_reset():
 	block = 0
-
 
 
 func take_damage(amt: int, ignore_armor: bool = false):
