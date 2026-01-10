@@ -8,6 +8,13 @@ var hp_max: int = 20
 var armor: int = 0
 var block: int = 0
 
+
+
+func turn_reset():
+	block = 0
+
+
+
 func take_damage(amt: int, ignore_armor: bool = false):
 	if amt == 0:
 		return
@@ -42,5 +49,9 @@ func gain_block(amt):
 	block += amt
 
 
-func turn_reset():
-	block = 0
+func set_armor(amt):
+	armor = amt
+
+
+func gain_armor(amt):
+	armor += amt

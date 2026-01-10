@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqelnplfpmwub"]
+[gd_scene load_steps=7 format=3 uid="uid://cqelnplfpmwub"]
 
 [ext_resource type="Script" uid="uid://b5ald3x4a2rrj" path="res://locations/dungeon_visual.gd" id="1_m27jx"]
 [ext_resource type="Texture2D" uid="uid://dea6ame11lyg" path="res://images/dice formations background.png" id="2_8vgkd"]
 [ext_resource type="Texture2D" uid="uid://dosmvqgay6ja6" path="res://images/Lark Meadows.png" id="2_vwmrs"]
 [ext_resource type="Texture2D" uid="uid://cpayjcdgpyogg" path="res://images/snakey.png" id="4_shdhk"]
+[ext_resource type="PackedScene" uid="uid://br8030cxjs20k" path="res://characters/enemies/enemy_visual.tscn" id="5_xlr57"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shdhk"]
 bg_color = Color(0.16470589, 0.4, 0.44313726, 1)
@@ -23,34 +24,45 @@ size_flags_vertical = 3
 script = ExtResource("1_m27jx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -616.0
-offset_right = 616.0
-offset_bottom = 706.0
+offset_left = -609.0
+offset_top = -48.0
+offset_right = 623.0
+offset_bottom = 658.0
 grow_horizontal = 2
 texture = ExtResource("2_8vgkd")
 
-[node name="AbilityButtons" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-
-[node name="BottomOfScreen" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -31.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BottomOfScreen"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 16
+
+[node name="AbilityButtons" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BottomOfScreen" type="HBoxContainer" parent="VBoxContainer"]
+z_index = 20
+z_as_relative = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BottomOfScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 0
@@ -58,39 +70,55 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="BottomOfScreen/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/BottomOfScreen/MarginContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_shdhk")
 
-[node name="MarginContainer" type="MarginContainer" parent="BottomOfScreen/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BottomOfScreen/MarginContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="DiceContainer" type="HBoxContainer" parent="BottomOfScreen/MarginContainer/PanelContainer/MarginContainer"]
+[node name="DiceContainer" type="HBoxContainer" parent="VBoxContainer/BottomOfScreen/MarginContainer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="EndTurnButton" type="Button" parent="BottomOfScreen"]
+[node name="EndTurnButton" type="Button" parent="VBoxContainer/BottomOfScreen"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "End turn"
 
-[node name="LarkMeadows" type="Sprite2D" parent="."]
+[node name="Snakey" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(861, 368)
+texture = ExtResource("4_shdhk")
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="LarkMeadows" type="Sprite2D" parent="Characters"]
 position = Vector2(276.00003, 376.00003)
 scale = Vector2(0.590301, 0.58418894)
 texture = ExtResource("2_vwmrs")
 
-[node name="Snakey" type="Sprite2D" parent="."]
-position = Vector2(861, 368)
-texture = ExtResource("4_shdhk")
+[node name="EnemySpots" type="Node2D" parent="Characters"]
+unique_name_in_owner = true
+position = Vector2(834, 350)
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Spot1" type="Node2D" parent="Characters/EnemySpots"]
 
-[connection signal="pressed" from="BottomOfScreen/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[node name="Enemy" parent="Characters/EnemySpots/Spot1" instance=ExtResource("5_xlr57")]
+
+[node name="Spot2" type="Node2D" parent="Characters/EnemySpots"]
+position = Vector2(225, 150)
+
+[node name="Spot3" type="Node2D" parent="Characters/EnemySpots"]
+position = Vector2(-299, 150)
+
+[connection signal="pressed" from="VBoxContainer/BottomOfScreen/EndTurnButton" to="." method="_on_end_turn_button_pressed"]

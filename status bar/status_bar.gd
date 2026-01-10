@@ -11,7 +11,7 @@ func set_hp(amt):
 	%HP.text = str(hp) + "/" + str(hp_max)
 
 func set_max_hp(amt):
-	hp_max += amt
+	hp_max = amt
 
 func set_gold(amt):
 	gold = amt

@@ -3,6 +3,8 @@ class_name DungeonVisual extends Node
 const DIE = preload("uid://b7tillw5s46vh")
 const ABILITY_SUMMARY = preload("uid://c4y33hfvqujok")
 const ABILITY_LIST_ITEM = preload("uid://bv2jb61ljkhrv")
+const ENEMY_VISUAL = preload("uid://br8030cxjs20k")
+
 
 @export var player: Player
 @export var dungeon: Dungeon
@@ -11,8 +13,21 @@ var visible_ability_summary: AbilitySummary
 
 
 func _ready():
+	_show_enemies()
 	_list_abilities()
 	_on_turn_start()
+
+
+func _show_enemies():
+	print(dungeon.enemies)
+	var enemy_index = 0
+	for enemy in dungeon.enemies:
+		print("Hi, ", enemy.display_name)
+		var vis = ENEMY_VISUAL.instantiate()
+		vis.enemy = enemy
+		%EnemySpots.get_child(enemy_index).add_child(vis)
+		enemy_index += 1
+		
 
 
 func _list_abilities():

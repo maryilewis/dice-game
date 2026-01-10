@@ -1,6 +1,8 @@
 extends Control
 
 const DUNGEON_VISUAL = preload("uid://cqelnplfpmwub")
+const EnemySnakey = preload("uid://blj8h2c3quyhk")
+
 
 var player: Player
 @onready var status_bar: StatusBar = %StatusBar

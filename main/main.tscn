@@ -28,6 +28,8 @@ theme_override_constants/separation = 0
 
 [node name="StatusBar" parent="VBoxContainer" instance=ExtResource("4_kfbq2")]
 unique_name_in_owner = true
+z_index = 30
+z_as_relative = false
 layout_mode = 2
 
 [node name="Location" type="Control" parent="VBoxContainer"]
