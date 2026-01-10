@@ -3,14 +3,15 @@ extends Control
 const DUNGEON_VISUAL = preload("uid://cqelnplfpmwub")
 
 var player: Player
-
+@onready var status_bar: StatusBar = %StatusBar
 
 func _ready():
 	player = Player.new()
-	player.abilities = [BasicDamageAbility.new(), DaggerAbility.new(), FlurryOfBlowsAbility.new()]
-
-
-# TODO link player and status bar
+	player.abilities = [BasicDamageAbility.new(), DaggerAbility.new(), MatchDamageAbility.new()]
+	# link player and status bar
+	player.gold_changed.connect(status_bar.set_gold)
+	player.hp_changed.connect(status_bar.set_hp)
+	player.max_hp_changed.connect(status_bar.set_max_hp)
 
 
 func _on_instructions_modal_ok_pressed():

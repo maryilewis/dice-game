@@ -1,4 +1,4 @@
-extends Control
+class_name StatusBar extends Control
 
 var hp: int
 var hp_max: int
@@ -10,7 +10,7 @@ func set_hp(amt):
 	hp = amt
 	%HP.text = str(hp) + "/" + str(hp_max)
 
-func set_hp_max(amt):
+func set_max_hp(amt):
 	hp_max += amt
 
 func set_gold(amt):

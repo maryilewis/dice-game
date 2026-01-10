@@ -1,7 +1,7 @@
-class_name FlurryOfBlowsAbility extends Ability
+class_name MatchDamageAbility extends Ability
 
 func _init():
-	display_name = "Flurry of Blows"
+	display_name = "Bullet Time"
 	description = "Cost: 3 of a kind.  Does total damage to all enemies."
 	uses_per_turn = 1 # 0 for infinite
 	number_of_dice = 3 # if an ability has infinite uses, it cannot have 0 cost

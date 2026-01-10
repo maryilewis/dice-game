@@ -17,11 +17,11 @@ signal pressed
 
 
 func _used_up():
-	print("this ability should be disabled now")
+	print("this ability should look disabled now")
+
 
 func _restored():
 	print("this ability is all better now")
-
 
 
 func _on_button_pressed():

@@ -16,8 +16,8 @@ func _ready():
 
 
 func _list_abilities():
-	print(player.abilities)
 	for ability in player.abilities:
+		ability.turn_reset()
 		var ability_button = ABILITY_LIST_ITEM.instantiate()
 		ability_button.ability = ability
 		ability_button.pressed.connect(_select_ability.bind(ability))
@@ -46,6 +46,7 @@ func _close_ability_summary():
 
 
 func _on_end_turn_button_pressed():
+	_close_ability_summary()
 	%EndTurnButton.disabled = true
 	for enemy in dungeon.enemies:
 		enemy.take_turn(dungeon.enemies, player)
