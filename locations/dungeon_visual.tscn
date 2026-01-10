@@ -91,4 +91,6 @@ texture = ExtResource("2_vwmrs")
 position = Vector2(861, 368)
 texture = ExtResource("4_shdhk")
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [connection signal="pressed" from="BottomOfScreen/EndTurnButton" to="." method="_on_end_turn_button_pressed"]

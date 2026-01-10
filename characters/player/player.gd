@@ -12,6 +12,12 @@ var max_banked_dice: int = 5
 
 var location # TODO - where on he map are you?
 
+
+func _ready():
+	change_hp(30)
+	change_hp_max(30)
+
+
 # TODO - outside player?
 func day_tick():
 	days -= 1

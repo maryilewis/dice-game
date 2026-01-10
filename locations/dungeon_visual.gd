@@ -35,6 +35,17 @@ func _select_ability(ability: Ability):
 	visible_ability_summary.set_ability(ability)
 	visible_ability_summary.die_removed.connect(_on_die_returned)
 	visible_ability_summary.close_requested.connect(_close_ability_summary)
+	visible_ability_summary.ability_activated.connect(_activate_ability.bind(visible_ability_summary))
+
+
+func _activate_ability(ability_summary: AbilitySummary):
+	ability_summary.ability.execute(ability_summary.get_die_values())
+	visible_ability_summary.queue_free()
+	dice = []
+	for child: IndividualDie in %DiceContainer.get_children():
+		if child.value != null:
+			dice.append(child.value)
+	# TODO update corresponding list item to reflect that an ability has been used
 
 
 func _close_ability_summary():
@@ -55,6 +66,7 @@ func _on_end_turn_button_pressed():
 
 
 func _on_turn_start():
+	# TODO reset all abilities
 	var num_to_roll = min(player.num_dice, player.max_banked_dice - len(dice))
 	for i in range(0, num_to_roll):
 		dice.append(randi_range(1, 6))
@@ -65,6 +77,11 @@ func _on_turn_start():
 		die.set_value(num)
 		%DiceContainer.add_child(die)
 		die.pressed.connect(_on_die_clicked.bind(die))
+	if len(dice) < player.max_banked_dice:
+		for i in range (len(dice), player.max_banked_dice):
+			var die: IndividualDie = DIE.instantiate()
+			%DiceContainer.add_child(die)
+			die.pressed.connect(_on_die_clicked.bind(die))
 
 
 func _on_die_returned(value: int):

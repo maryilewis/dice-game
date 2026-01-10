@@ -3,6 +3,8 @@ const DIE = preload("uid://b7tillw5s46vh")
 
 signal die_removed(int)
 signal close_requested
+signal ability_activated
+
 var ability: Ability
 
 
@@ -49,3 +51,9 @@ func get_die_values():
 
 func _on_cancel_button_pressed():
 	close_requested.emit()
+
+
+func _on_modal_ok_pressed():
+	var ok = ability.check_dice(get_die_values())
+	if ok:
+		ability_activated.emit()
