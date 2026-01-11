@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b5ald3x4a2rrj" path="res://locations/dungeon_visual.gd" id="1_m27jx"]
 [ext_resource type="Texture2D" uid="uid://dea6ame11lyg" path="res://images/dice formations background.png" id="2_8vgkd"]
 [ext_resource type="Texture2D" uid="uid://dosmvqgay6ja6" path="res://images/Lark Meadows.png" id="2_vwmrs"]
-[ext_resource type="Texture2D" uid="uid://cpayjcdgpyogg" path="res://images/snakey.png" id="4_shdhk"]
 [ext_resource type="PackedScene" uid="uid://br8030cxjs20k" path="res://characters/enemies/enemy_visual.tscn" id="5_xlr57"]
+[ext_resource type="FontFile" uid="uid://dgre43iy6m0r8" path="res://fonts/talkco/Talkco.ttf" id="6_sh5ex"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shdhk"]
 bg_color = Color(0.16470589, 0.4, 0.44313726, 1)
@@ -39,6 +39,7 @@ texture = ExtResource("2_8vgkd")
 
 [node name="ChooseTargetLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -115,17 +116,20 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "End turn"
 
-[node name="Snakey" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(861, 368)
-texture = ExtResource("4_shdhk")
-
 [node name="Characters" type="Node2D" parent="."]
 
 [node name="LarkMeadows" type="Sprite2D" parent="Characters"]
 position = Vector2(276.00003, 376.00003)
 scale = Vector2(0.590301, 0.58418894)
 texture = ExtResource("2_vwmrs")
+
+[node name="PlayerStatusLabel" type="Label" parent="Characters/LarkMeadows"]
+unique_name_in_owner = true
+offset_left = -32.187023
+offset_top = -231.08969
+offset_right = 7.812977
+offset_bottom = -210.08969
+text = "OW"
 
 [node name="EnemySpots" type="Node2D" parent="Characters"]
 unique_name_in_owner = true
@@ -140,5 +144,27 @@ position = Vector2(225, 150)
 
 [node name="Spot3" type="Node2D" parent="Characters/EnemySpots"]
 position = Vector2(-299, 150)
+
+[node name="FullScreenText" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -333.0
+offset_right = 333.0
+offset_bottom = 219.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="FullScreenText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16470589, 0.4, 0.44313726, 1)
+theme_override_colors/font_shadow_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+theme_override_colors/font_outline_color = Color(1, 0.5882353, 0.078431375, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_sh5ex")
+theme_override_font_sizes/font_size = 200
+text = "Rolling"
 
 [connection signal="pressed" from="VBoxContainer/BottomOfScreen/EndTurnButton" to="." method="_on_end_turn_button_pressed"]

@@ -38,6 +38,7 @@ func _show_enemies():
 func _list_abilities():
 	for ability in player.abilities:
 		ability.turn_reset()
+		ability.enemies = dungeon.enemies
 		var ability_button = ABILITY_LIST_ITEM.instantiate()
 		ability_button.ability = ability
 		ability_button.pressed.connect(_select_ability.bind(ability))
@@ -66,6 +67,7 @@ func _activate_ability():
 	else:
 		selecting_targets = true
 		visible_ability_summary.hide()
+		%AbilityButtons.hide()
 
 
 func _select_enemy(vis: EnemyVisual):
@@ -77,6 +79,7 @@ func _select_enemy(vis: EnemyVisual):
 
 
 func _complete_ability():
+	%AbilityButtons.show()
 	if visible_ability_summary == null:
 		return
 	visible_ability_summary.ability.execute(visible_ability_summary.get_die_values())
@@ -90,7 +93,7 @@ func _complete_ability():
 
 # Cancel - close abilty without executing
 func _close_ability_summary():
-	print(_close_ability_summary)
+	%AbilityButtons.show()
 	selecting_targets = false
 	if visible_ability_summary != null:
 		for value in visible_ability_summary.get_die_values():

@@ -190,6 +190,7 @@ offset_left = 509.0
 offset_top = 391.0
 offset_right = 584.0
 offset_bottom = 461.0
+current = false
 
 [node name="Saloon" parent="Buttons" instance=ExtResource("3_4hjbm")]
 offset_left = 508.0
@@ -198,6 +199,7 @@ offset_right = 583.0
 offset_bottom = 558.0
 display_text = "Saloon"
 texture = ExtResource("4_lgq1i")
+current = false
 
 [node name="Dungeon 2" type="Button" parent="Buttons"]
 offset_left = 472.0
@@ -253,3 +255,4 @@ locations, unless you have a
 teleportation scroll"
 
 [connection signal="pressed" from="Buttons/Dungeon 1" to="." method="_on_dungeon_1_pressed"]
+[connection signal="pressed" from="Buttons/Saloon" to="." method="_on_saloon_pressed"]

@@ -12,3 +12,9 @@ class_name MapItem extends Button
 	set(value):
 		texture = value
 		%TextureRect.texture = texture
+
+
+@export var current: bool:
+	set(value):
+		current = value
+		%CurrentIndicator.visible = value

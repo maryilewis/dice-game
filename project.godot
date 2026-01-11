@@ -13,6 +13,7 @@ config_version=5
 config/name="dice game"
 run/main_scene="uid://do37q1j0i5oru"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://b6yw6rfeh7vhc"
 config/icon="res://icon.svg"
 
 [gui]

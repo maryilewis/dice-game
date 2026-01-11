@@ -14,9 +14,7 @@ var location # TODO - where on he map are you?
 
 
 func _ready():
-	change_hp(30)
-	change_hp_max(30)
-
+	pass
 
 # TODO - outside player?
 func day_tick():
@@ -26,9 +24,14 @@ func day_tick():
 		print("uh oh she's a-coming")
 
 
-func change_hp_max(amt):
+func change_hp_max_by_amt(amt):
 	hp_max += amt
 	hp += amt
+	max_hp_changed.emit(hp_max)
+
+
+func set_hp_max(amt):
+	hp_max = amt
 	max_hp_changed.emit(hp_max)
 
 
@@ -45,6 +48,7 @@ func change_gold(amt):
 
 func add_ability(ability: Ability):
 	abilities.append(ability)
+	ability.player = self
 
 
 func remove_ability(ability: Ability):

@@ -27,19 +27,21 @@ func take_damage(amt: int, ignore_armor: bool = false):
 		block = max(block, 0)
 	if amt <= 0:
 		return
-	hp -= amt
-	if hp <= 0:
-		print("u died bro")
-	hp_changed.emit(hp)
+	change_hp_by_amt(-amt)
 
 
 # Generic change HP by this amount function
-func change_hp(amt):
+func change_hp_by_amt(amt):
 	hp += amt
 	if hp > hp_max:
 		hp = hp_max
 	if hp <= 0:
 		print("u died bro")
+	hp_changed.emit(hp)
+
+
+func set_hp(amt):
+	hp = amt
 	hp_changed.emit(hp)
 
 

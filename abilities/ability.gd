@@ -46,7 +46,9 @@ func execute(dice_values: Array):
 	elif target_type == TargetType.ALL_ENEMIES:
 		targets = enemies
 	elif target_type == TargetType.EVERYONE:
-		targets = enemies.duplicate()
+		targets = []
+		for e in enemies:
+			targets.append(e)
 		targets.append(player)
 	_execute_on_targets(targets, dice_values)
 	targets = []

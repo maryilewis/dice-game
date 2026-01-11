@@ -9,11 +9,15 @@ var player: Player
 
 func _ready():
 	player = Player.new()
-	player.abilities = [BasicDamageAbility.new(), DaggerAbility.new(), MatchDamageAbility.new()]
+	var abilities = [BasicDamageAbility.new(), DaggerAbility.new(), MatchDamageAbility.new(), DynamiteAbility.new()]
+	for a in abilities:
+		player.add_ability(a)
 	# link player and status bar
 	player.gold_changed.connect(status_bar.set_gold)
 	player.hp_changed.connect(status_bar.set_hp)
 	player.max_hp_changed.connect(status_bar.set_max_hp)
+	player.set_hp_max(20)
+	player.set_hp(20)
 
 
 func _on_instructions_modal_ok_pressed():
