@@ -251,3 +251,5 @@ text = "Pretend you start at \"quaint inn\"
 and you can only go to adjacent
 locations, unless you have a
 teleportation scroll"
+
+[connection signal="pressed" from="Buttons/Dungeon 1" to="." method="_on_dungeon_1_pressed"]
