@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://dguqlox7g1fw0"]
+
+[ext_resource type="Script" uid="uid://bcrovv01t8wiy" path="res://map/map_item.gd" id="1_65ede"]
+[ext_resource type="Texture2D" uid="uid://c8i0gq67np6it" path="res://icons/crossed-pistols.svg" id="1_j6v74"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65ede"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc5o7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Dungeon 1" type="Button"]
+z_index = 1
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_65ede")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vc5o7")
+flat = true
+script = ExtResource("1_65ede")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("1_j6v74")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dust-up 1"
+horizontal_alignment = 1

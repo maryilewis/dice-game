@@ -108,7 +108,10 @@ func _on_end_turn_button_pressed():
 
 
 func _on_turn_start():
-	# TODO reset all abilities
+	# Reset player abilities
+	for a in player.abilities:
+		a.turn_reset()
+	# roll new dice
 	var num_to_roll = min(player.num_dice, player.max_banked_dice - len(dice))
 	for i in range(0, num_to_roll):
 		dice.append(randi_range(1, 6))
@@ -119,6 +122,7 @@ func _on_turn_start():
 		die.set_value(num)
 		%DiceContainer.add_child(die)
 		die.pressed.connect(_on_die_clicked.bind(die))
+	# show empty slots
 	if len(dice) < player.max_banked_dice:
 		for i in range (len(dice), player.max_banked_dice):
 			var die: IndividualDie = DIE.instantiate()

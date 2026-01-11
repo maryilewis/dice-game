@@ -1,9 +1,154 @@
-[gd_scene load_steps=2 format=3 uid="uid://d25seijf62h21"]
+[gd_scene load_steps=4 format=3 uid="uid://d25seijf62h21"]
 
 [ext_resource type="Script" uid="uid://dlhmdniy11v6x" path="res://map/map.gd" id="1_hgrid"]
+[ext_resource type="Texture2D" uid="uid://cofs2sxj3fwy3" path="res://images/map background.png" id="2_a0dt8"]
+[ext_resource type="PackedScene" uid="uid://dguqlox7g1fw0" path="res://map/map item.tscn" id="3_4hjbm"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_hgrid")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(582, 317)
+texture = ExtResource("2_a0dt8")
+
+[node name="lines" type="Node2D" parent="."]
+
+[node name="Line2D2" type="Line2D" parent="lines"]
+position = Vector2(492, -1024)
+points = PackedVector2Array(454, 575, 371, 553)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D" type="Line2D" parent="lines"]
+position = Vector2(246, -512)
+points = PackedVector2Array(509, 576, 371, 553)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D3" type="Line2D" parent="lines"]
+position = Vector2(-334, -203)
+points = PackedVector2Array(507, 337, 632, 284)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D4" type="Line2D" parent="lines"]
+position = Vector2(-251, -307)
+points = PackedVector2Array(514, 581, 394, 509)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D8" type="Line2D" parent="lines"]
+position = Vector2(-2, -124)
+points = PackedVector2Array(498, 495, 370, 536)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D9" type="Line2D" parent="lines"]
+position = Vector2(229, -164)
+points = PackedVector2Array(465, 628, 364, 533)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D10" type="Line2D" parent="lines"]
+position = Vector2(-53, -290)
+points = PackedVector2Array(592, 460, 586, 527)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D12" type="Line2D" parent="lines"]
+position = Vector2(75, -178)
+points = PackedVector2Array(462, 455, 465, 527)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D13" type="Line2D" parent="lines"]
+position = Vector2(42, -5)
+points = PackedVector2Array(322, 430, 450, 496)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D14" type="Line2D" parent="lines"]
+position = Vector2(29, -1)
+points = PackedVector2Array(523, 602, 520, 521)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D15" type="Line2D" parent="lines"]
+position = Vector2(294, -115)
+points = PackedVector2Array(454, 575, 482, 501)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D16" type="Line2D" parent="lines"]
+position = Vector2(146, -84)
+points = PackedVector2Array(454, 575, 556, 567)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D17" type="Line2D" parent="lines"]
+position = Vector2(91, -130)
+points = PackedVector2Array(453, 601, 454, 534)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D18" type="Line2D" parent="lines"]
+position = Vector2(208, -390)
+points = PackedVector2Array(486, 485, 380, 536)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D19" type="Line2D" parent="lines"]
+position = Vector2(77, -460)
+points = PackedVector2Array(460, 594, 461, 520)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D20" type="Line2D" parent="lines"]
+position = Vector2(11, -438)
+points = PackedVector2Array(478, 590, 380, 536)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D21" type="Line2D" parent="lines"]
+position = Vector2(289, -403)
+points = PackedVector2Array(462, 590, 470, 522)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D23" type="Line2D" parent="lines"]
+points = PackedVector2Array(316, 250, 332, 101)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D24" type="Line2D" parent="lines"]
+position = Vector2(-88, -515)
+points = PackedVector2Array(454, 568, 551, 557)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D28" type="Line2D" parent="lines"]
+position = Vector2(-92, -305)
+points = PackedVector2Array(454, 575, 512.63214, 565.6846, 578, 560)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D5" type="Line2D" parent="lines"]
+position = Vector2(293, -230)
+points = PackedVector2Array(432, 596, 304, 592)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D29" type="Line2D" parent="lines"]
+position = Vector2(-92, -305)
+points = PackedVector2Array(850, 530, 681, 560)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
+
+[node name="Line2D30" type="Line2D" parent="lines"]
+position = Vector2(-92, -305)
+points = PackedVector2Array(684, 469, 803, 508)
+width = 3.0
+default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
 [node name="Buttons" type="Node2D" parent="."]
 
@@ -27,14 +172,14 @@ offset_left = 711.0
 offset_top = 189.0
 offset_right = 836.0
 offset_bottom = 220.0
-text = "Mountain shop"
+text = "Specific Store"
 
 [node name="Mountain Smith" type="Button" parent="Buttons"]
-offset_left = 302.0
-offset_top = 62.0
-offset_right = 435.0
-offset_bottom = 93.0
-text = "Mountain Smith"
+offset_left = 277.0
+offset_top = 58.0
+offset_right = 509.0
+offset_bottom = 102.0
+text = "Mountain Gunsmith"
 
 [node name="Wandering Trader of the West" type="Button" parent="Buttons"]
 offset_left = 94.0
@@ -44,12 +189,11 @@ offset_bottom = 196.0
 text = "Wandering
 Trader"
 
-[node name="Dungeon 1" type="Button" parent="Buttons"]
-offset_left = 499.0
-offset_top = 478.0
-offset_right = 591.0
-offset_bottom = 509.0
-text = "Dungeon 1"
+[node name="Dungeon 1" parent="Buttons" instance=ExtResource("3_4hjbm")]
+offset_left = 547.0
+offset_top = 498.0
+offset_right = 627.0
+offset_bottom = 578.0
 
 [node name="Dungeon 2" type="Button" parent="Buttons"]
 offset_left = 497.0
@@ -68,28 +212,25 @@ text = "Dungeon 3
 "
 
 [node name="Inn 1" type="Button" parent="Buttons"]
-offset_left = 507.0
-offset_top = 609.0
-offset_right = 598.0
-offset_bottom = 640.0
-text = "Quaint Inn
-"
+offset_left = 442.0
+offset_top = 603.0
+offset_right = 657.0
+offset_bottom = 647.0
+text = "The Dusty Tavern"
 
 [node name="Village Smith" type="Button" parent="Buttons"]
 offset_left = 705.0
 offset_top = 466.0
 offset_right = 813.0
 offset_bottom = 497.0
-text = "Village Smith
-"
+text = "Town Gunsmith"
 
 [node name="Village Shop" type="Button" parent="Buttons"]
 offset_left = 261.0
 offset_top = 396.0
 offset_right = 363.0
 offset_bottom = 427.0
-text = "Village Shop
-"
+text = "General Store"
 
 [node name="Dungeon 4" type="Button" parent="Buttons"]
 offset_left = 495.0
@@ -112,99 +253,6 @@ offset_right = 360.0
 offset_bottom = 291.0
 text = "Dungeon 6
 "
-
-[node name="lines" type="Node2D" parent="."]
-
-[node name="Line2D2" type="Line2D" parent="lines"]
-position = Vector2(492, -1024)
-points = PackedVector2Array(454, 575, 371, 553)
-
-[node name="Line2D" type="Line2D" parent="lines"]
-position = Vector2(246, -512)
-points = PackedVector2Array(509, 576, 371, 553)
-
-[node name="Line2D3" type="Line2D" parent="lines"]
-position = Vector2(-334, -203)
-points = PackedVector2Array(507, 337, 632, 284)
-
-[node name="Line2D4" type="Line2D" parent="lines"]
-position = Vector2(-251, -307)
-points = PackedVector2Array(514, 581, 394, 509)
-
-[node name="Line2D8" type="Line2D" parent="lines"]
-position = Vector2(-2, -124)
-points = PackedVector2Array(498, 495, 370, 536)
-
-[node name="Line2D9" type="Line2D" parent="lines"]
-position = Vector2(229, -164)
-points = PackedVector2Array(465, 628, 364, 533)
-
-[node name="Line2D10" type="Line2D" parent="lines"]
-position = Vector2(-53, -290)
-points = PackedVector2Array(592, 460, 586, 527)
-
-[node name="Line2D12" type="Line2D" parent="lines"]
-position = Vector2(75, -178)
-points = PackedVector2Array(462, 455, 465, 527)
-
-[node name="Line2D13" type="Line2D" parent="lines"]
-position = Vector2(42, -5)
-points = PackedVector2Array(322, 430, 450, 496)
-
-[node name="Line2D14" type="Line2D" parent="lines"]
-position = Vector2(29, -1)
-points = PackedVector2Array(523, 602, 520, 521)
-
-[node name="Line2D15" type="Line2D" parent="lines"]
-position = Vector2(294, -115)
-points = PackedVector2Array(454, 575, 482, 501)
-
-[node name="Line2D16" type="Line2D" parent="lines"]
-position = Vector2(146, -84)
-points = PackedVector2Array(454, 575, 556, 567)
-
-[node name="Line2D17" type="Line2D" parent="lines"]
-position = Vector2(91, -130)
-points = PackedVector2Array(453, 601, 454, 534)
-
-[node name="Line2D18" type="Line2D" parent="lines"]
-position = Vector2(208, -390)
-points = PackedVector2Array(486, 485, 380, 536)
-
-[node name="Line2D19" type="Line2D" parent="lines"]
-position = Vector2(77, -460)
-points = PackedVector2Array(460, 594, 461, 520)
-
-[node name="Line2D20" type="Line2D" parent="lines"]
-position = Vector2(11, -438)
-points = PackedVector2Array(478, 590, 380, 536)
-
-[node name="Line2D21" type="Line2D" parent="lines"]
-position = Vector2(289, -403)
-points = PackedVector2Array(462, 590, 470, 522)
-
-[node name="Line2D23" type="Line2D" parent="lines"]
-points = PackedVector2Array(316, 250, 332, 101)
-
-[node name="Line2D24" type="Line2D" parent="lines"]
-position = Vector2(-88, -515)
-points = PackedVector2Array(454, 568, 551, 557)
-
-[node name="Line2D28" type="Line2D" parent="lines"]
-position = Vector2(-92, -305)
-points = PackedVector2Array(454, 575, 512.63214, 565.6846, 578, 560)
-
-[node name="Line2D5" type="Line2D" parent="lines"]
-position = Vector2(293, -230)
-points = PackedVector2Array(432, 596, 304, 592)
-
-[node name="Line2D29" type="Line2D" parent="lines"]
-position = Vector2(-92, -305)
-points = PackedVector2Array(850, 530, 681, 560)
-
-[node name="Line2D30" type="Line2D" parent="lines"]
-position = Vector2(-92, -305)
-points = PackedVector2Array(684, 469, 803, 508)
 
 [node name="Label" type="Label" parent="."]
 offset_top = 463.0

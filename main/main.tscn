@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://do37q1j0i5oru"]
+[gd_scene load_steps=7 format=3 uid="uid://do37q1j0i5oru"]
 
 [ext_resource type="PackedScene" uid="uid://c2is5hi4k3ag8" path="res://shared ui elements/modal.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://g1tteb6ctg3h" path="res://main/main.gd" id="1_c651c"]
+[ext_resource type="Texture2D" uid="uid://dea6ame11lyg" path="res://images/dice formations background.png" id="2_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://d25seijf62h21" path="res://map/map.tscn" id="3_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://dy3xdw2akmucu" path="res://status bar/status_bar.tscn" id="4_kfbq2"]
 [ext_resource type="Texture2D" uid="uid://dosmvqgay6ja6" path="res://images/Lark Meadows.png" id="5_3wy1v"]
@@ -16,6 +17,19 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_c651c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -609.0
+offset_top = -48.0
+offset_right = 623.0
+offset_bottom = 658.0
+grow_horizontal = 2
+texture = ExtResource("2_kfbq2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
