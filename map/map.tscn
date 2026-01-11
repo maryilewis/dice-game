@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d25seijf62h21"]
+[gd_scene load_steps=5 format=3 uid="uid://d25seijf62h21"]
 
 [ext_resource type="Script" uid="uid://dlhmdniy11v6x" path="res://map/map.gd" id="1_hgrid"]
 [ext_resource type="Texture2D" uid="uid://cofs2sxj3fwy3" path="res://images/map background.png" id="2_a0dt8"]
-[ext_resource type="PackedScene" uid="uid://dguqlox7g1fw0" path="res://map/map item.tscn" id="3_4hjbm"]
+[ext_resource type="PackedScene" uid="uid://bkl6yadx11egm" path="res://map/map_item.tscn" id="3_4hjbm"]
+[ext_resource type="Texture2D" uid="uid://2nul7pgkqck2" path="res://icons/saloon.svg" id="4_lgq1i"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_hgrid")
@@ -51,13 +52,7 @@ default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
 [node name="Line2D10" type="Line2D" parent="lines"]
 position = Vector2(-53, -290)
-points = PackedVector2Array(592, 460, 586, 527)
-width = 3.0
-default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
-
-[node name="Line2D12" type="Line2D" parent="lines"]
-position = Vector2(75, -178)
-points = PackedVector2Array(462, 455, 465, 527)
+points = PackedVector2Array(592, 460, 593, 582)
 width = 3.0
 default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
@@ -68,8 +63,8 @@ width = 3.0
 default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
 [node name="Line2D14" type="Line2D" parent="lines"]
-position = Vector2(29, -1)
-points = PackedVector2Array(523, 602, 520, 521)
+position = Vector2(24, -70)
+points = PackedVector2Array(523, 554, 520, 533)
 width = 3.0
 default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
@@ -87,7 +82,7 @@ default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
 [node name="Line2D17" type="Line2D" parent="lines"]
 position = Vector2(91, -130)
-points = PackedVector2Array(453, 601, 454, 534)
+points = PackedVector2Array(453, 512, 449, 464)
 width = 3.0
 default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
@@ -134,7 +129,7 @@ default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
 [node name="Line2D5" type="Line2D" parent="lines"]
 position = Vector2(293, -230)
-points = PackedVector2Array(432, 596, 304, 592)
+points = PackedVector2Array(432, 596, 318, 549)
 width = 3.0
 default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 
@@ -157,7 +152,8 @@ offset_left = 466.0
 offset_top = 24.0
 offset_right = 615.0
 offset_bottom = 55.0
-text = "Ice Queen's Castle"
+text = "The Coyote's
+Last Stand"
 
 [node name="Last Rest Stop" type="Button" parent="Buttons"]
 offset_left = 702.0
@@ -190,33 +186,26 @@ text = "Wandering
 Trader"
 
 [node name="Dungeon 1" parent="Buttons" instance=ExtResource("3_4hjbm")]
-offset_left = 547.0
-offset_top = 498.0
-offset_right = 627.0
-offset_bottom = 578.0
+offset_left = 509.0
+offset_top = 391.0
+offset_right = 584.0
+offset_bottom = 461.0
+
+[node name="Saloon" parent="Buttons" instance=ExtResource("3_4hjbm")]
+offset_left = 508.0
+offset_top = 488.0
+offset_right = 583.0
+offset_bottom = 558.0
+display_text = "Saloon"
+texture = ExtResource("4_lgq1i")
 
 [node name="Dungeon 2" type="Button" parent="Buttons"]
-offset_left = 497.0
-offset_top = 358.0
-offset_right = 589.0
-offset_bottom = 389.0
+offset_left = 472.0
+offset_top = 291.0
+offset_right = 610.0
+offset_bottom = 335.0
 text = "Dungeon 2
 "
-
-[node name="Dungeon 3" type="Button" parent="Buttons"]
-offset_left = 493.0
-offset_top = 235.0
-offset_right = 585.0
-offset_bottom = 266.0
-text = "Dungeon 3
-"
-
-[node name="Inn 1" type="Button" parent="Buttons"]
-offset_left = 442.0
-offset_top = 603.0
-offset_right = 657.0
-offset_bottom = 647.0
-text = "The Dusty Tavern"
 
 [node name="Village Smith" type="Button" parent="Buttons"]
 offset_left = 705.0
@@ -262,5 +251,3 @@ text = "Pretend you start at \"quaint inn\"
 and you can only go to adjacent
 locations, unless you have a
 teleportation scroll"
-
-[connection signal="pressed" from="Buttons/Dungeon 1" to="." method="_on_dungeon_1_pressed"]

@@ -10,4 +10,5 @@ class_name MapItem extends Button
 
 @export var texture: Texture2D:
 	set(value):
+		texture = value
 		%TextureRect.texture = texture

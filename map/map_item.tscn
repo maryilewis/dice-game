@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkl6yadx11egm"]
+
+[ext_resource type="Texture2D" uid="uid://c8i0gq67np6it" path="res://icons/crossed-pistols.svg" id="1_7721l"]
+[ext_resource type="Script" uid="uid://ptgi4ajvhrth" path="res://map/map_item.gd" id="2_i40u8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7721l"]
+
+[node name="MapItem" type="Button"]
+custom_minimum_size = Vector2(75, 70)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -35.0
+offset_right = 37.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7721l")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("2_i40u8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(51, 51)
+layout_mode = 2
+texture = ExtResource("1_7721l")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dust-up 1"
+horizontal_alignment = 1
