@@ -1,12 +1,14 @@
 class_name Character extends Node
 
 signal hp_changed(int)
-
+signal died
 
 var hp: int = 20
 var hp_max: int = 20
 var armor: int = 0
 var block: int = 0
+var stunned = false
+var dead = false
 
 
 func turn_reset():
@@ -36,7 +38,8 @@ func change_hp_by_amt(amt):
 	if hp > hp_max:
 		hp = hp_max
 	if hp <= 0:
-		print("u died bro")
+		dead = true
+		died.emit()
 	hp_changed.emit(hp)
 
 
@@ -55,3 +58,7 @@ func set_armor(amt):
 
 func gain_armor(amt):
 	armor += amt
+
+
+func stun():
+	stunned = true

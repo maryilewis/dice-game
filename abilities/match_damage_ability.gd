@@ -32,7 +32,7 @@ func _all_match(dice_values: Array) -> bool:
 func _execute_on_targets(_targets: Array, dice_values: Array):
 	var damage = 0
 	for die in dice_values:
-		damage += dice_values
+		damage += die
 	for target in targets:
 		target.take_damage(damage)
 		

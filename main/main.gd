@@ -9,7 +9,8 @@ var player: Player
 
 func _ready():
 	player = Player.new()
-	var abilities = [BasicDamageAbility.new(), DaggerAbility.new(), MatchDamageAbility.new(), DynamiteAbility.new()]
+	# DaggerAbility.new(), 
+	var abilities = [BasicDamageAbility.new(), MatchDamageAbility.new(), BlockAbility.new(), DynamiteAbility.new()]
 	for a in abilities:
 		player.add_ability(a)
 	# link player and status bar
@@ -18,6 +19,11 @@ func _ready():
 	player.max_hp_changed.connect(status_bar.set_max_hp)
 	player.set_hp_max(20)
 	player.set_hp(20)
+	
+	
+	# TODO: Remove. here for testing purposes.
+	_on_instructions_modal_ok_pressed()
+	_on_map_selection_made("anything")
 
 
 func _on_instructions_modal_ok_pressed():
@@ -29,7 +35,7 @@ func _on_map_selection_made(_selection):
 	for child in %Location.get_children():
 		child.queue_free()
 	var dungeon = Dungeon.new()
-	var enemy = RegularEnemy.new()
+	var enemy = SnakeyEnemy.new()
 	var enemy_array: Array[Enemy] = []
 	enemy_array.append(enemy)
 	dungeon.enemies = enemy_array

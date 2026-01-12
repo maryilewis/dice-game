@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqelnplfpmwub"]
+[gd_scene load_steps=8 format=3 uid="uid://cqelnplfpmwub"]
 
 [ext_resource type="Script" uid="uid://b5ald3x4a2rrj" path="res://locations/dungeon_visual.gd" id="1_m27jx"]
 [ext_resource type="Texture2D" uid="uid://dea6ame11lyg" path="res://images/dice formations background.png" id="2_8vgkd"]
 [ext_resource type="Texture2D" uid="uid://dosmvqgay6ja6" path="res://images/Lark Meadows.png" id="2_vwmrs"]
+[ext_resource type="PackedScene" uid="uid://br8030cxjs20k" path="res://characters/enemies/enemy_visual.tscn" id="5_xlr57"]
 [ext_resource type="PackedScene" uid="uid://c2is5hi4k3ag8" path="res://shared ui elements/modal.tscn" id="6_2x53j"]
 [ext_resource type="FontFile" uid="uid://dgre43iy6m0r8" path="res://fonts/talkco/Talkco.ttf" id="6_sh5ex"]
 
@@ -136,6 +137,8 @@ unique_name_in_owner = true
 position = Vector2(834, 350)
 
 [node name="Spot1" type="Node2D" parent="Characters/EnemySpots"]
+
+[node name="Enemy" parent="Characters/EnemySpots/Spot1" instance=ExtResource("5_xlr57")]
 
 [node name="Spot2" type="Node2D" parent="Characters/EnemySpots"]
 position = Vector2(225, 150)

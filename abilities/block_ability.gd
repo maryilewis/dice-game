@@ -17,9 +17,9 @@ func check_dice(dice_values: Array) -> bool:
 
 
 func _execute_on_targets(_targets: Array, dice_values: Array):
-	var damage = 0
-	for die in dice_values:
-		damage += dice_values
+	var block = modifier
+	for val in dice_values:
+		block += val
 	for target in targets:
-		target.take_damage(damage + modifier)
+		target.gain_block(block)
 		

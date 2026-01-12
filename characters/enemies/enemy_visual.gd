@@ -7,7 +7,7 @@ var enemy: Enemy:
 		enemy = value
 		%Name.text = enemy.display_name
 		%HP.text = str(enemy.hp) + "/" + str(enemy.hp_max)
-		$Sprite2D.texture = load(enemy.image_path)
+		%Sprite2D.texture = load(enemy.image_path)
 		enemy.hp_changed.connect(_update_hp)
 	get():
 		return enemy

@@ -5,6 +5,9 @@ const ABILITY_SUMMARY = preload("uid://c4y33hfvqujok")
 const ABILITY_LIST_ITEM = preload("uid://bv2jb61ljkhrv")
 const ENEMY_VISUAL = preload("uid://br8030cxjs20k")
 
+# true if you win, false if you lose
+signal dungeon_complete(bool)
+
 
 @export var player: Player
 @export var dungeon: Dungeon
@@ -25,7 +28,6 @@ func _ready():
 
 
 func _show_enemies():
-	print(dungeon.enemies)
 	var enemy_index = 0
 	for enemy in dungeon.enemies:
 		var vis = ENEMY_VISUAL.instantiate()
@@ -33,6 +35,7 @@ func _show_enemies():
 		%EnemySpots.get_child(enemy_index).add_child(vis)
 		enemy_index += 1
 		vis.pressed.connect(_select_enemy.bind(vis))
+		enemy.died.connect(_on_enemy_died.bind(enemy, vis))
 
 
 func _list_abilities():
@@ -146,3 +149,32 @@ func _on_die_clicked(die: IndividualDie):
 		var sent = visible_ability_summary.add_die(die.value)
 		if sent:
 			die.clear_value()
+
+
+func _on_enemy_died(enemy: Enemy, vis: EnemyVisual):
+	print("rip " +str(enemy.display_name))
+	var idx := dungeon.enemies.find(enemy)
+	dungeon.enemies.remove_at(idx)
+	vis.queue_free()
+	enemy.queue_free()
+	
+	if len(dungeon.enemies) == 0:
+		on_fight_won()
+
+
+func on_fight_won():
+	print("yay gimme allt hat stuff")
+	%WinModal.show()
+
+
+func _on_player_died():
+	print("rip Johnny Showdown")
+	%LoseModal.show()
+
+
+func _on_win_modal_ok_pressed():
+	dungeon_complete.emit(true)
+
+
+func _on_lose_modal_ok_pressed():
+	dungeon_complete.emit(false)

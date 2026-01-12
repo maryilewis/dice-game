@@ -54,10 +54,10 @@ size_flags_vertical = 3
 
 [node name="Map" parent="." instance=ExtResource("3_3wy1v")]
 unique_name_in_owner = true
+visible = false
 
 [node name="InstructionsModal" parent="." instance=ExtResource("1_53q0u")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 offset_left = -300.0
 offset_top = -200.0

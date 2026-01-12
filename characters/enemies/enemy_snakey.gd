@@ -1,5 +1,4 @@
-class_name RegularEnemy extends Enemy
-
+class_name SnakeyEnemy extends Enemy
 
 func _init():
 	display_name = "Snakeoil Seller"
@@ -9,4 +8,8 @@ func _init():
 
 
 func take_turn(_enemies: Array, player: Player):
-	player.take_damage(randi_range(2, 5))
+	if !stunned:
+		player.take_damage(randi_range(2, 5))
+	stunned = false
+
+# TODO: how to communicate dice changes to dungeon_visual?

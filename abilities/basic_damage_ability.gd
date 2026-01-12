@@ -1,6 +1,6 @@
 class_name BasicDamageAbility extends Ability
 
-var modifier: int = 1
+var modifier: int = 20
 
 func _init():
 	display_name = "Called Shot"
