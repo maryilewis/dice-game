@@ -2,7 +2,7 @@
 @abstract
 class_name Ability extends Node
 
-enum TargetType { PLAYER, ENEMY, ALL_ENEMIES, EVERYONE }
+enum TargetType { PLAYER, ENEMY, ALL_ENEMIES, EVERYONE, DICE }
 
 signal remove_permanently
 signal out_of_uses
@@ -39,8 +39,7 @@ func set_target(enemy: Enemy):
 
 
 ## Array of ints
-func execute(dice_values: Array):
-	print(targets)
+func execute(dice: Array[IndividualDie]):
 	if target_type == TargetType.PLAYER:
 		targets = [player]
 	elif target_type == TargetType.ALL_ENEMIES:
@@ -50,7 +49,7 @@ func execute(dice_values: Array):
 		for e in enemies:
 			targets.append(e)
 		targets.append(player)
-	_execute_on_targets(targets, dice_values)
+	_execute_on_targets(targets, dice)
 	targets = []
 	if single_use:
 		remove_permanently.emit()
@@ -66,4 +65,4 @@ func turn_reset():
 
 # _targets is an array of Characters (enemy or player)
 @abstract
-func _execute_on_targets(_targets: Array, dice_values: Array)
+func _execute_on_targets(_targets: Array, dice: Array[IndividualDie])

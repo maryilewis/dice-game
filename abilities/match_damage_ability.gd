@@ -2,9 +2,9 @@ class_name MatchDamageAbility extends Ability
 
 func _init():
 	display_name = "Bullet Time"
-	description = "Cost: 3 of a kind.  Does total damage to all enemies."
+	description = "Cost: 2 of a kind.  Does 6 damage to all enemies."
 	uses_per_turn = 1 # 0 for infinite
-	number_of_dice = 3 # if an ability has infinite uses, it cannot have 0 cost
+	number_of_dice = 2 # if an ability has infinite uses, it cannot have 0 cost
 	target_type = TargetType.ALL_ENEMIES
 
 
@@ -29,10 +29,8 @@ func _all_match(dice_values: Array) -> bool:
 	return true
 
 
-func _execute_on_targets(_targets: Array, dice_values: Array):
-	var damage = 0
-	for die in dice_values:
-		damage += die
+func _execute_on_targets(_targets: Array, dice: Array[IndividualDie]):
 	for target in targets:
-		target.take_damage(damage)
-		
+		target.take_damage(6)
+	for die in dice:
+		die.consumed = true

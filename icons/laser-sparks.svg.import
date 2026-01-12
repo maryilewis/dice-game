@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k2x6ff2w27ab"
-path="res://.godot/imported/crosshair.svg-f3c6e96549511ed43ba62250c8648b47.ctex"
+uid="uid://luk5sv7xwq7d"
+path="res://.godot/imported/laser-sparks.svg-e4cdd274a562a87b38daaa09d396cb1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/crosshair.svg"
-dest_files=["res://.godot/imported/crosshair.svg-f3c6e96549511ed43ba62250c8648b47.ctex"]
+source_file="res://icons/laser-sparks.svg"
+dest_files=["res://.godot/imported/laser-sparks.svg-e4cdd274a562a87b38daaa09d396cb1f.ctex"]
 
 [params]
 

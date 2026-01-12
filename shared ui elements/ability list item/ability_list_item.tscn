@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv2jb61ljkhrv"]
+[gd_scene load_steps=7 format=3 uid="uid://bv2jb61ljkhrv"]
 
 [ext_resource type="Script" uid="uid://dr3bdbnfa0utr" path="res://shared ui elements/ability list item/ability_list_item.gd" id="1_ae7er"]
+[ext_resource type="Texture2D" uid="uid://6btq7grfxhtv" path="res://icons/rolling-dices.svg" id="2_hy4hf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ae7er"]
 
@@ -24,12 +25,10 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
 [node name="AbilityListItem" type="PanelContainer"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -50.0
-offset_right = 300.0
-offset_bottom = 50.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -50,8 +49,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ae7er")
 
 [node name="TargetsLabel" type="Label" parent="HBoxContainer/PanelContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
+text = "test"
+horizontal_alignment = 1
+
+[node name="TargetsIcon" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_hy4hf")
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(150, 75)
@@ -60,25 +67,33 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_hy4hf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/PanelContainer2/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_type_variation = &"HeaderMedium"
 theme_override_constants/line_spacing = -1
+text = "test"
 
-[node name="DescriptionLabel" type="Label" parent="HBoxContainer/PanelContainer2/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/line_spacing = -4
+text = "test"
 autowrap_mode = 2
 
 [node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer"]
@@ -91,6 +106,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_p8k1q")
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
+text = "test"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.20784314)

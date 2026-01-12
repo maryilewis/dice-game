@@ -19,17 +19,17 @@ func set_ability(_ability: Ability):
 			%DiceContainer.add_child(die)
 
 
-func add_die(value: int) -> bool:
+func add_die(clicked_die: IndividualDie) -> bool:
 	# see if the die value is compatible with the ability
 	var values = get_die_values()
-	values.append(value)
+	values.append(clicked_die.value)
 	var ok = ability.check_dice_partial(values)
 	print("ok? ", ok)
 	if ok:
 		# see if there is room for this die
 		for die: IndividualDie in %DiceContainer.get_children():
 			if die.value == null:
-				die.set_value(value)
+				die.set_value(clicked_die.value)
 				return true
 	return false
 
@@ -39,6 +39,14 @@ func remove_die(die: IndividualDie):
 		var val = die.value
 		die.clear_value()
 		die_removed.emit(val)
+
+
+func get_dice() -> Array[IndividualDie]:
+	var values: Array[IndividualDie] = []
+	for die: IndividualDie in %DiceContainer.get_children():
+		if die.value != null:
+			values.append(die)
+	return values
 
 
 func get_die_values():

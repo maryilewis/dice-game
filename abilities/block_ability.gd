@@ -16,10 +16,12 @@ func check_dice(dice_values: Array) -> bool:
 	return false
 
 
-func _execute_on_targets(_targets: Array, dice_values: Array):
+func _execute_on_targets(_targets: Array, dice: Array[IndividualDie]):
+	var dice_values = dice.map(func(i: IndividualDie): return i.value)
 	var block = modifier
 	for val in dice_values:
 		block += val
 	for target in targets:
 		target.gain_block(block)
-		
+	for die in dice:
+		die.consumed = true

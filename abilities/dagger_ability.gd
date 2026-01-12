@@ -14,7 +14,8 @@ func check_dice(dice_values: Array) -> bool:
 	return false
 
 
-func _execute_on_targets(_targets: Array, _dice_values: Array):
+func _execute_on_targets(_targets: Array, _dice: Array):
 	for target: Character in targets:
 		target.take_damage(1)
-		
+	for die in dice:
+		die.consumed = true

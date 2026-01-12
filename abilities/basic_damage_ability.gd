@@ -1,6 +1,6 @@
 class_name BasicDamageAbility extends Ability
 
-var modifier: int = 20
+var modifier: int = 1
 
 func _init():
 	display_name = "Called Shot"
@@ -16,10 +16,13 @@ func check_dice(dice_values: Array) -> bool:
 	return false
 
 
-func _execute_on_targets(_targets: Array, dice_values: Array):
+func _execute_on_targets(_targets: Array, dice: Array[IndividualDie]):
+	var dice_values = dice.map(func(i: IndividualDie): return i.value)
 	var damage = 0
 	for die in dice_values:
 		damage += die
 	for target in targets:
 		target.take_damage(damage + modifier)
+	for die in dice:
+		die.consumed = true
 		

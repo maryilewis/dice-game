@@ -10,7 +10,7 @@ var player: Player
 func _ready():
 	player = Player.new()
 	# DaggerAbility.new(), 
-	var abilities = [BasicDamageAbility.new(), MatchDamageAbility.new(), BlockAbility.new(), DynamiteAbility.new()]
+	var abilities = [RerollAbility.new() , BasicDamageAbility.new(), MatchDamageAbility.new(), BlockAbility.new(), DynamiteAbility.new()]
 	for a in abilities:
 		player.add_ability(a)
 	# link player and status bar

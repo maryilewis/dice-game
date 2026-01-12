@@ -11,7 +11,7 @@ signal dungeon_complete(bool)
 
 @export var player: Player
 @export var dungeon: Dungeon
-var dice: Array[int] = []
+var dice: Array[IndividualDie] = []
 var visible_ability_summary: AbilitySummary
 var selecting_targets: bool = false:
 	set(value):
@@ -85,12 +85,13 @@ func _complete_ability():
 	%AbilityButtons.show()
 	if visible_ability_summary == null:
 		return
-	visible_ability_summary.ability.execute(visible_ability_summary.get_die_values())
+	visible_ability_summary.ability.execute(visible_ability_summary.get_dice())
 	visible_ability_summary.queue_free()
+	# TODO give dice back if it was a dice ability!!
 	dice = []
 	for child: IndividualDie in %DiceContainer.get_children():
-		if child.value != null:
-			dice.append(child.value)
+		if child.value != null and !child.consumed:
+			dice.append(child)
 	# TODO update corresponding list item to reflect that an ability has been used
 
 
@@ -119,11 +120,20 @@ func _on_turn_start():
 		a.turn_reset()
 	# roll new dice
 	var num_to_roll = min(player.num_dice, player.max_banked_dice - len(dice))
-	for i in range(0, num_to_roll):
-		dice.append(randi_range(1, 6))
-	for child in %DiceContainer.get_children():
+	var dice_values = []
+	
+	# tracked banked dice and clear visuals
+	for child: IndividualDie in %DiceContainer.get_children():
+		if child.value != null and not child.consumed:
+			dice_values.append(child.value)
 		child.queue_free()
-	for num in dice:
+	
+	# roll additional dice
+	for i in range(0, num_to_roll):
+		dice_values.append(randi_range(1, 6))
+	
+	# recreate visuals
+	for num in dice_values:
 		var die: IndividualDie = DIE.instantiate()
 		die.set_value(num)
 		%DiceContainer.add_child(die)
@@ -137,7 +147,6 @@ func _on_turn_start():
 
 
 func _on_die_returned(value: int):
-	print("returning", value)
 	for child: IndividualDie in %DiceContainer.get_children():
 		if child.value == null:
 			child.set_value(value)
@@ -146,7 +155,7 @@ func _on_die_returned(value: int):
 
 func _on_die_clicked(die: IndividualDie):
 	if visible_ability_summary != null:
-		var sent = visible_ability_summary.add_die(die.value)
+		var sent = visible_ability_summary.add_die(die)
 		if sent:
 			die.clear_value()
 
@@ -163,7 +172,7 @@ func _on_enemy_died(enemy: Enemy, vis: EnemyVisual):
 
 
 func on_fight_won():
-	print("yay gimme allt hat stuff")
+	# TODO spoils
 	%WinModal.show()
 
 
