@@ -42,6 +42,18 @@ func _on_map_selection_made(_selection):
 	var dungeon_visual: DungeonVisual = DUNGEON_VISUAL.instantiate()
 	dungeon_visual.dungeon = dungeon
 	dungeon_visual.player = player
+	dungeon_visual.dungeon_complete.connect(_return_to_map.bind(dungeon_visual))
 	%Location.add_child(dungeon_visual)
 	%Map.hide()
 	%Location.show()
+
+func _return_to_map(victorious: bool, dungeon: DungeonVisual):
+	%Map.show()
+	%Location.hide()
+	dungeon.queue_free()
+	if !victorious:
+		pass
+		# TODO: go to the inn, lose some money
+	
+	
+	
