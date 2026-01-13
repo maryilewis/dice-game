@@ -11,7 +11,7 @@ signal dungeon_complete(bool)
 
 @export var player: Player
 @export var dungeon: Dungeon
-var dice: Array[IndividualDie] = []
+#var dice: Array[IndividualDie] = []
 var visible_ability_summary: AbilitySummary
 var selecting_targets: bool = false:
 	set(value):
@@ -85,13 +85,17 @@ func _complete_ability():
 	%AbilityButtons.show()
 	if visible_ability_summary == null:
 		return
-	visible_ability_summary.ability.execute(visible_ability_summary.get_dice())
+	var ability_dice := visible_ability_summary.get_dice()
+	visible_ability_summary.ability.execute(ability_dice)
 	visible_ability_summary.queue_free()
 	# TODO give dice back if it was a dice ability!!
-	dice = []
-	for child: IndividualDie in %DiceContainer.get_children():
-		if child.value != null and !child.consumed:
-			dice.append(child)
+	for die in ability_dice:
+		if !die.consumed:
+			_on_die_returned(die.value)
+	#dice = []
+	#for child: IndividualDie in %DiceContainer.get_children():
+		#if child.value != null and !child.consumed:
+			#dice.append(child)
 	# TODO update corresponding list item to reflect that an ability has been used
 
 
@@ -119,7 +123,6 @@ func _on_turn_start():
 	for a in player.abilities:
 		a.turn_reset()
 	# roll new dice
-	var num_to_roll = min(player.num_dice, player.max_banked_dice - len(dice))
 	var dice_values = []
 	
 	# tracked banked dice and clear visuals
@@ -127,6 +130,8 @@ func _on_turn_start():
 		if child.value != null and not child.consumed:
 			dice_values.append(child.value)
 		child.queue_free()
+
+	var num_to_roll = min(player.num_dice, player.max_banked_dice - len(dice_values))
 	
 	# roll additional dice
 	for i in range(0, num_to_roll):
@@ -139,8 +144,8 @@ func _on_turn_start():
 		%DiceContainer.add_child(die)
 		die.pressed.connect(_on_die_clicked.bind(die))
 	# show empty slots
-	if len(dice) < player.max_banked_dice:
-		for i in range (len(dice), player.max_banked_dice):
+	if len(dice_values) < player.max_banked_dice:
+		for i in range (len(dice_values), player.max_banked_dice):
 			var die: IndividualDie = DIE.instantiate()
 			%DiceContainer.add_child(die)
 			die.pressed.connect(_on_die_clicked.bind(die))

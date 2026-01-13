@@ -23,3 +23,4 @@ func _on_button_pressed():
 
 func roll():
 	set_value(randi_range(1, 6))
+	print("rolled a ", value)
