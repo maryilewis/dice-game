@@ -11,7 +11,6 @@ signal dungeon_complete(bool)
 
 @export var player: Player
 @export var dungeon: Dungeon
-#var dice: Array[IndividualDie] = []
 var visible_ability_summary: AbilitySummary
 var selecting_targets: bool = false:
 	set(value):
@@ -88,14 +87,10 @@ func _complete_ability():
 	var ability_dice := visible_ability_summary.get_dice()
 	visible_ability_summary.ability.execute(ability_dice)
 	visible_ability_summary.queue_free()
-	# TODO give dice back if it was a dice ability!!
+	# give dice back if needed (dice ability)
 	for die in ability_dice:
 		if !die.consumed:
 			_on_die_returned(die.value)
-	#dice = []
-	#for child: IndividualDie in %DiceContainer.get_children():
-		#if child.value != null and !child.consumed:
-			#dice.append(child)
 	# TODO update corresponding list item to reflect that an ability has been used
 
 
