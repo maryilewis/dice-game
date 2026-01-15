@@ -2,7 +2,7 @@ class_name MatchDamageAbility extends Ability
 
 func _init():
 	display_name = "Bullet Time"
-	description = "Cost: 2 of a kind.  Does 6 damage to all enemies."
+	description = "■ ■ (matching.)  Does 6 damage to all enemies."
 	uses_per_turn = 1 # 0 for infinite
 	number_of_dice = 2 # if an ability has infinite uses, it cannot have 0 cost
 	target_type = TargetType.ALL_ENEMIES

@@ -148,40 +148,41 @@ default_color = Color(0.45882353, 0.27450982, 0.14117648, 1)
 [node name="Buttons" type="Node2D" parent="."]
 
 [node name="Castle" type="Button" parent="Buttons"]
-offset_left = 466.0
-offset_top = 24.0
-offset_right = 615.0
-offset_bottom = 55.0
+offset_left = 561.0
+offset_top = 81.0
+offset_right = 725.0
+offset_bottom = 157.0
 text = "The Coyote's
 Last Stand"
 
 [node name="Last Rest Stop" type="Button" parent="Buttons"]
-offset_left = 702.0
-offset_top = 68.0
-offset_right = 819.0
-offset_bottom = 122.0
+offset_left = 689.0
+offset_top = 158.0
+offset_right = 831.0
+offset_bottom = 234.0
 text = "Mountain
 Monestary"
 
 [node name="Mountain Shop" type="Button" parent="Buttons"]
-offset_left = 711.0
-offset_top = 189.0
-offset_right = 836.0
-offset_bottom = 220.0
+offset_left = 629.0
+offset_top = 274.0
+offset_right = 798.0
+offset_bottom = 318.0
 text = "Specific Store"
 
 [node name="Mountain Smith" type="Button" parent="Buttons"]
-offset_left = 277.0
-offset_top = 58.0
-offset_right = 509.0
-offset_bottom = 102.0
-text = "Mountain Gunsmith"
+offset_left = 378.0
+offset_top = 85.0
+offset_right = 610.0
+offset_bottom = 161.0
+text = "Mountain
+Gunsmith"
 
 [node name="Wandering Trader of the West" type="Button" parent="Buttons"]
-offset_left = 94.0
-offset_top = 142.0
-offset_right = 192.0
-offset_bottom = 196.0
+offset_left = 349.0
+offset_top = 175.0
+offset_right = 494.0
+offset_bottom = 251.0
 text = "Wandering
 Trader"
 
@@ -202,46 +203,46 @@ texture = ExtResource("4_lgq1i")
 current = false
 
 [node name="Dungeon 2" type="Button" parent="Buttons"]
-offset_left = 472.0
-offset_top = 291.0
-offset_right = 610.0
-offset_bottom = 335.0
+offset_left = 473.0
+offset_top = 314.0
+offset_right = 611.0
+offset_bottom = 358.0
 text = "Dungeon 2
 "
 
 [node name="Village Smith" type="Button" parent="Buttons"]
-offset_left = 705.0
-offset_top = 466.0
-offset_right = 813.0
-offset_bottom = 497.0
+offset_left = 553.0
+offset_top = 461.0
+offset_right = 744.0
+offset_bottom = 505.0
 text = "Town Gunsmith"
 
 [node name="Village Shop" type="Button" parent="Buttons"]
-offset_left = 261.0
-offset_top = 396.0
-offset_right = 363.0
-offset_bottom = 427.0
+offset_left = 372.0
+offset_top = 458.0
+offset_right = 542.0
+offset_bottom = 502.0
 text = "General Store"
 
 [node name="Dungeon 4" type="Button" parent="Buttons"]
-offset_left = 495.0
-offset_top = 138.0
-offset_right = 587.0
-offset_bottom = 169.0
+offset_left = 544.0
+offset_top = 227.0
+offset_right = 682.0
+offset_bottom = 271.0
 text = "Dungeon 4"
 
 [node name="Dungeon 5" type="Button" parent="Buttons"]
-offset_left = 731.0
-offset_top = 352.0
-offset_right = 823.0
-offset_bottom = 383.0
+offset_left = 550.0
+offset_top = 355.0
+offset_right = 688.0
+offset_bottom = 399.0
 text = "Dungeon 5"
 
 [node name="Dungeon 6" type="Button" parent="Buttons"]
-offset_left = 268.0
-offset_top = 260.0
-offset_right = 360.0
-offset_bottom = 291.0
+offset_left = 408.0
+offset_top = 264.0
+offset_right = 548.0
+offset_bottom = 308.0
 text = "Dungeon 6
 "
 
@@ -249,7 +250,7 @@ text = "Dungeon 6
 offset_top = 463.0
 offset_right = 268.0
 offset_bottom = 612.0
-text = "Pretend you start at \"quaint inn\"
+text = "Pretend you start at the saloon
 and you can only go to adjacent
 locations, unless you have a
 teleportation scroll"

@@ -4,7 +4,7 @@ var modifier: int = 1
 
 func _init():
 	display_name = "Dynamite"
-	description = "Cost: Any dice. Number of dice squared damage to everyone, including player"
+	description = "■+ Number of dice squared damage to everyone, including player"
 	uses_per_turn = 1 # 0 for infinite
 	number_of_dice = 5 # TODO: how to have unlimited dice?
 	single_use = true

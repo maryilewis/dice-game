@@ -108,9 +108,17 @@ func _on_end_turn_button_pressed():
 	_close_ability_summary()
 	%EndTurnButton.disabled = true
 	for enemy in dungeon.enemies:
-		enemy.take_turn(dungeon.enemies, player)
+		enemy.take_turn(dungeon.enemies, player, get_dice_values())
 	%EndTurnButton.disabled = false
 	_on_turn_start()
+
+
+func get_dice_values() -> Array[IndividualDie]:
+	var dice_values: Array[IndividualDie] = []
+	for child: IndividualDie in %DiceContainer.get_children():
+		if child.value != null and not child.consumed:
+			dice_values.append(child)
+	return dice_values
 
 
 func _on_turn_start():
