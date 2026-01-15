@@ -3,7 +3,6 @@ class_name Player extends Character
 signal max_hp_changed(int)
 signal gold_changed(int)
 
-var display_name: String = "Demo"
 var abilities: Array[Ability] = []
 var gold: int = 0;
 var days: int

@@ -2,6 +2,15 @@ class_name Character extends Node
 
 signal hp_changed(int)
 signal died
+signal voice_lined(String)
+signal attacked(int)
+signal armored(int)
+signal blocked(int)
+signal took_damage(int)
+signal healed(int)
+
+var image_path: String
+var display_name: String
 
 var hp: int = 20
 var hp_max: int = 20
@@ -25,10 +34,12 @@ func take_damage(amt: int, ignore_armor: bool = false):
 		var amt_before_block = amt
 		amt -= block
 		print("blocked " + str(block))
+		blocked.emit(min(block, amt_before_block))
 		block -= amt_before_block
 		block = max(block, 0)
 	if amt <= 0:
 		return
+	took_damage.emit(amt)
 	change_hp_by_amt(-amt)
 
 
@@ -62,3 +73,7 @@ func gain_armor(amt):
 
 func stun():
 	stunned = true
+
+
+func voice_line(line: String):
+	voice_lined.emit(line)

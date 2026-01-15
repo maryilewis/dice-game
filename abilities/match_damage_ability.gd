@@ -28,8 +28,10 @@ func _all_match(dice_values: Array) -> bool:
 			return false
 	return true
 
-
+# TODO: sending targets is redundant? we set that globally?
 func _execute_on_targets(_targets: Array, dice: Array[IndividualDie]):
+	print(targets)
+	print(_targets)
 	for target in targets:
 		target.take_damage(6)
 	for die in dice:

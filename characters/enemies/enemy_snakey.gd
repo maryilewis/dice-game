@@ -9,7 +9,9 @@ func _init():
 
 func take_turn(_enemies: Array, player: Player):
 	if !stunned:
-		player.take_damage(randi_range(2, 5))
+		var damage = randi_range(2, 5)
+		player.take_damage(damage)
+		attacked.emit(damage)
 	stunned = false
 
 # TODO: how to communicate dice changes to dungeon_visual?

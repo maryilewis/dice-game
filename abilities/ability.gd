@@ -49,7 +49,9 @@ func execute(dice: Array[IndividualDie]):
 		for e in enemies:
 			targets.append(e)
 		targets.append(player)
+	
 	_execute_on_targets(targets, dice)
+	
 	targets = []
 	if single_use:
 		remove_permanently.emit()

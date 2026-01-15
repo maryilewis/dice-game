@@ -30,10 +30,10 @@ func _show_enemies():
 	var enemy_index = 0
 	for enemy in dungeon.enemies:
 		var vis = ENEMY_VISUAL.instantiate()
-		vis.enemy = enemy
+		vis.character = enemy as Character
 		%EnemySpots.get_child(enemy_index).add_child(vis)
 		enemy_index += 1
-		vis.pressed.connect(_select_enemy.bind(vis))
+		vis.pressed.connect(_select_target.bind(vis))
 		enemy.died.connect(_on_enemy_died.bind(enemy, vis))
 
 
@@ -72,10 +72,10 @@ func _activate_ability():
 		%AbilityButtons.hide()
 
 
-func _select_enemy(vis: EnemyVisual):
+func _select_target(vis: CharacterVisual):
 	if !selecting_targets:
 		return
-	visible_ability_summary.ability.targets = [vis.enemy]
+	visible_ability_summary.ability.set_target(vis.character)
 	_complete_ability()
 	selecting_targets = false
 
@@ -160,7 +160,7 @@ func _on_die_clicked(die: IndividualDie):
 			die.clear_value()
 
 
-func _on_enemy_died(enemy: Enemy, vis: EnemyVisual):
+func _on_enemy_died(enemy: Enemy, vis: CharacterVisual):
 	print("rip " +str(enemy.display_name))
 	var idx := dungeon.enemies.find(enemy)
 	dungeon.enemies.remove_at(idx)

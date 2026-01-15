@@ -1,28 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://br8030cxjs20k"]
+[gd_scene load_steps=8 format=3 uid="uid://br8030cxjs20k"]
 
 [ext_resource type="Script" uid="uid://ckgdvsjrckgrn" path="res://characters/enemies/enemy_visual.gd" id="1_eoq23"]
+[ext_resource type="PackedScene" uid="uid://c2is5hi4k3ag8" path="res://shared ui elements/modal.tscn" id="2_bj52o"]
 [ext_resource type="Texture2D" uid="uid://cpayjcdgpyogg" path="res://images/snakey.png" id="2_us8be"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_us8be"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us8be"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.8666667, 0.28627452, 0, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gyjcy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykemr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bj52o"]
 
-[node name="Enemy" type="Node2D"]
+[node name="Character" type="Node2D"]
 script = ExtResource("1_eoq23")
+
+[node name="Speech" parent="." instance=ExtResource("2_bj52o")]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 0)
+offset_left = -400.0
+offset_top = -300.0
+offset_right = -200.0
+offset_bottom = -126.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" parent="Speech/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
+visible = false
+
+[node name="BodyLabel" parent="Speech/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
+text = "text"
+
+[node name="Yes" parent="Speech/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="No" parent="Speech/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -39,22 +53,49 @@ offset_bottom = -158.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_us8be")
-theme_override_styles/hover = SubResource("StyleBoxFlat_us8be")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gyjcy")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ykemr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bj52o")
 
-[node name="Name" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-offset_left = -71.0
-offset_top = -71.0
-offset_right = 91.0
-offset_bottom = -50.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = -174.0
+offset_right = 250.0
+offset_bottom = -99.0
+grow_horizontal = 2
+alignment = 1
 
-[node name="HP" type="Label" parent="."]
+[node name="Name" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
-offset_left = -71.0
-offset_top = -39.0
-offset_right = 87.0
-offset_bottom = -15.0
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Enemy"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 1.0
+show_percentage = false
+
+[node name="HP" type="Label" parent="VBoxContainer/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderSmall"
+text = "x/y"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]
+
+[editable path="Speech"]
