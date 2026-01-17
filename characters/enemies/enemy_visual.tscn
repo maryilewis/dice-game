@@ -12,13 +12,22 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bj52o"]
 
-[node name="Character" type="Node2D"]
+[node name="Character" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_eoq23")
 
 [node name="Speech" parent="." instance=ExtResource("2_bj52o")]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 0)
+layout_mode = 1
 offset_left = -400.0
 offset_top = -300.0
 offset_right = -200.0
@@ -38,18 +47,20 @@ visible = false
 [node name="No" parent="Speech/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="2"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="TextureRect" parent="."]
 unique_name_in_owner = true
+layout_mode = 0
+offset_left = -353.0
+offset_top = -159.0
+offset_right = 354.0
+offset_bottom = 158.0
 texture = ExtResource("2_us8be")
 
 [node name="Button" type="Button" parent="Sprite2D"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -353.5
-offset_top = -158.5
-offset_right = -353.5
-offset_bottom = -158.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_us8be")
@@ -59,6 +70,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_bj52o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

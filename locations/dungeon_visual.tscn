@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqelnplfpmwub"]
 
 [ext_resource type="Script" uid="uid://b5ald3x4a2rrj" path="res://locations/dungeon_visual.gd" id="1_m27jx"]
-[ext_resource type="Texture2D" uid="uid://dea6ame11lyg" path="res://images/dice formations background.png" id="2_8vgkd"]
 [ext_resource type="Texture2D" uid="uid://dosmvqgay6ja6" path="res://images/Lark Meadows.png" id="2_vwmrs"]
+[ext_resource type="PackedScene" uid="uid://b0qmsdxiq2ihv" path="res://backgrounds/dice formations at sunset/background1.tscn" id="2_xlr57"]
 [ext_resource type="PackedScene" uid="uid://c2is5hi4k3ag8" path="res://shared ui elements/modal.tscn" id="6_2x53j"]
 [ext_resource type="FontFile" uid="uid://dgre43iy6m0r8" path="res://fonts/talkco/Talkco.ttf" id="6_sh5ex"]
 
@@ -23,24 +23,85 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_m27jx")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background1" parent="." instance=ExtResource("2_xlr57")]
+position = Vector2(0, -30)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="FullScreenText" type="CenterContainer" parent="CanvasLayer"]
 visible = false
-z_as_relative = false
-layout_mode = 1
+top_level = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -609.0
-offset_top = -48.0
-offset_right = 623.0
-offset_bottom = 658.0
+offset_left = -333.0
+offset_right = 333.0
+offset_bottom = 219.0
 grow_horizontal = 2
-texture = ExtResource("2_8vgkd")
 
-[node name="ChooseTargetLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer/FullScreenText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16470589, 0.4, 0.44313726, 1)
+theme_override_colors/font_shadow_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+theme_override_colors/font_outline_color = Color(1, 0.5882353, 0.078431375, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_sh5ex")
+theme_override_font_sizes/font_size = 200
+text = "Rolling"
+
+[node name="WinModal" parent="CanvasLayer" instance=ExtResource("6_2x53j")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
+top_level = true
+offset_left = -250.0
+offset_right = 250.0
+mouse_filter = 1
+body_text = "You win!"
+
+[node name="Label" type="Label" parent="CanvasLayer/WinModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "You win!"
+horizontal_alignment = 1
+
+[node name="BodyLabel" parent="CanvasLayer/WinModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
+text = "You collect:"
+
+[node name="No" parent="CanvasLayer/WinModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="3"]
+visible = false
+
+[node name="LoseModal" parent="CanvasLayer" instance=ExtResource("6_2x53j")]
+unique_name_in_owner = true
+visible = false
+top_level = true
+offset_left = -250.0
+offset_right = 250.0
+mouse_filter = 1
+body_text = "You win!"
+
+[node name="Label" type="Label" parent="CanvasLayer/LoseModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "It's all over..."
+horizontal_alignment = 1
+
+[node name="BodyLabel" parent="CanvasLayer/LoseModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
+text = "You collect:"
+
+[node name="No" parent="CanvasLayer/LoseModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="3"]
+visible = false
+
+[node name="ChooseTargetLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+top_level = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -57,34 +118,81 @@ theme_override_constants/shadow_outline_size = 5
 text = "Choose your target"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+top_level = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 16
 
-[node name="AbilityButtons" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="AbilityButtons" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_vertical = 8
 
-[node name="BottomOfScreen" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Characters" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/Characters"]
+layout_mode = 2
+texture = ExtResource("2_vwmrs")
+stretch_mode = 3
+
+[node name="PlayerStatusLabel" type="Label" parent="CanvasLayer/VBoxContainer/Characters/TextureRect"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 112.0
+offset_right = 168.0
+offset_bottom = 133.0
+text = "OW"
+horizontal_alignment = 1
+
+[node name="Space" type="Control" parent="CanvasLayer/VBoxContainer/Characters"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="EnemySpots" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/Characters"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Spot1" type="Control" parent="CanvasLayer/VBoxContainer/Characters/EnemySpots"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Spot2" type="Control" parent="CanvasLayer/VBoxContainer/Characters/EnemySpots"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Spot3" type="Control" parent="CanvasLayer/VBoxContainer/Characters/EnemySpots"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BottomOfScreen" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 z_index = 20
 z_as_relative = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BottomOfScreen"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/BottomOfScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 0
@@ -92,124 +200,34 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/BottomOfScreen/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/VBoxContainer/BottomOfScreen/MarginContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_shdhk")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BottomOfScreen/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/BottomOfScreen/MarginContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="DiceContainer" type="HBoxContainer" parent="VBoxContainer/BottomOfScreen/MarginContainer/PanelContainer/MarginContainer"]
+[node name="DiceContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/BottomOfScreen/MarginContainer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="EndTurnButton" type="Button" parent="VBoxContainer/BottomOfScreen"]
+[node name="EndTurnButton" type="Button" parent="CanvasLayer/VBoxContainer/BottomOfScreen"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "End turn"
 
-[node name="Characters" type="Node2D" parent="."]
+[connection signal="ok_pressed" from="CanvasLayer/WinModal" to="." method="_on_win_modal_ok_pressed"]
+[connection signal="ok_pressed" from="CanvasLayer/LoseModal" to="." method="_on_lose_modal_ok_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/BottomOfScreen/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
 
-[node name="LarkMeadows" type="Sprite2D" parent="Characters"]
-position = Vector2(276.00003, 376.00003)
-scale = Vector2(0.590301, 0.58418894)
-texture = ExtResource("2_vwmrs")
-
-[node name="PlayerStatusLabel" type="Label" parent="Characters/LarkMeadows"]
-unique_name_in_owner = true
-offset_left = -32.187023
-offset_top = -231.08969
-offset_right = 7.812977
-offset_bottom = -210.08969
-text = "OW"
-
-[node name="EnemySpots" type="Node2D" parent="Characters"]
-unique_name_in_owner = true
-position = Vector2(834, 350)
-
-[node name="Spot1" type="Node2D" parent="Characters/EnemySpots"]
-
-[node name="Spot2" type="Node2D" parent="Characters/EnemySpots"]
-position = Vector2(225, 150)
-
-[node name="Spot3" type="Node2D" parent="Characters/EnemySpots"]
-position = Vector2(-299, 150)
-
-[node name="FullScreenText" type="CenterContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -333.0
-offset_right = 333.0
-offset_bottom = 219.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="FullScreenText"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.16470589, 0.4, 0.44313726, 1)
-theme_override_colors/font_shadow_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
-theme_override_colors/font_outline_color = Color(1, 0.5882353, 0.078431375, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("6_sh5ex")
-theme_override_font_sizes/font_size = 200
-text = "Rolling"
-
-[node name="WinModal" parent="." instance=ExtResource("6_2x53j")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-offset_left = -250.0
-offset_right = 250.0
-body_text = "You win!"
-
-[node name="Label" type="Label" parent="WinModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="0"]
-layout_mode = 2
-theme_type_variation = &"HeaderLarge"
-text = "You win!"
-horizontal_alignment = 1
-
-[node name="BodyLabel" parent="WinModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
-text = "You collect:"
-
-[node name="No" parent="WinModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="3"]
-visible = false
-
-[node name="LoseModal" parent="." instance=ExtResource("6_2x53j")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-offset_left = -250.0
-offset_right = 250.0
-body_text = "You win!"
-
-[node name="Label" type="Label" parent="LoseModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="0"]
-layout_mode = 2
-theme_type_variation = &"HeaderLarge"
-text = "It's all over..."
-horizontal_alignment = 1
-
-[node name="BodyLabel" parent="LoseModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
-text = "You collect:"
-
-[node name="No" parent="LoseModal/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="3"]
-visible = false
-
-[connection signal="pressed" from="VBoxContainer/BottomOfScreen/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
-[connection signal="ok_pressed" from="WinModal" to="." method="_on_win_modal_ok_pressed"]
-[connection signal="ok_pressed" from="LoseModal" to="." method="_on_lose_modal_ok_pressed"]
-
-[editable path="WinModal"]
-[editable path="LoseModal"]
+[editable path="CanvasLayer/WinModal"]
+[editable path="CanvasLayer/LoseModal"]

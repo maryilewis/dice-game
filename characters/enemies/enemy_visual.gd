@@ -1,4 +1,4 @@
-class_name CharacterVisual extends Node2D
+class_name CharacterVisual extends Node
 
 signal pressed
 
