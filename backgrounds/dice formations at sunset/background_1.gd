@@ -7,6 +7,10 @@ func _ready():
 	pass
 
 func _process(delta):
-	#$Parallax2D/Clouds.offset.x -= delta * cloud_speed
-	#$"Parallax2D/Cloud Shadows".offset.x -= delta * cloud_speed
+	var offset_x = $Parallax2D2/Clouds.offset.x + (delta * cloud_speed)
+	if offset_x > 1232:
+		offset_x = 0
+	$Parallax2D2/Clouds.offset.x = offset_x
+	$"Parallax2D4/Cloud Shadows".offset.x = offset_x
+	
 	pass

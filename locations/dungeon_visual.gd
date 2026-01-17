@@ -54,7 +54,7 @@ func _select_ability(ability: Ability):
 			return
 
 	visible_ability_summary = ABILITY_SUMMARY.instantiate()
-	%CanvasLayer.add_child(visible_ability_summary)
+	%DungeonUI.add_child(visible_ability_summary)
 	visible_ability_summary.set_ability(ability)
 	visible_ability_summary.die_removed.connect(_on_die_returned)
 	visible_ability_summary.close_requested.connect(_close_ability_summary)
@@ -104,14 +104,15 @@ func _close_ability_summary():
 		visible_ability_summary.queue_free()
 
 
-var cam_shift_amt = 100
+var cam_shift_amt = -200
+var cam_shift_time = .5
 
 func _on_end_turn_button_pressed():
 	_close_ability_summary()
 	%EndTurnButton.disabled = true
 	%AbilityButtons.hide()
 	var cam_move_tween = get_tree().create_tween()
-	cam_move_tween.tween_property(%Camera2D, "position", %Camera2D.position + Vector2(cam_shift_amt, 0), .5)
+	cam_move_tween.tween_property(%Camera2D, "position", %Camera2D.position + Vector2(cam_shift_amt, 0), cam_shift_time)
 	cam_move_tween.tween_callback(_take_enemy_turn)
 
 
@@ -119,7 +120,7 @@ func _take_enemy_turn():
 	for enemy in dungeon.enemies:
 		enemy.take_turn(dungeon.enemies, player, get_dice_values())
 	var cam_move_tween = get_tree().create_tween()
-	cam_move_tween.tween_property(%Camera2D, "position", %Camera2D.position - Vector2(cam_shift_amt, 0), .5)
+	cam_move_tween.tween_property(%Camera2D, "position", %Camera2D.position - Vector2(cam_shift_amt, 0), cam_shift_time)
 	cam_move_tween.tween_callback(_on_turn_start)
 
 

@@ -14,64 +14,80 @@
 script = ExtResource("1_4oo4d")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="Sky" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("2_p2na5")
 centered = false
+offset = Vector2(-1232, 0)
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.05, 0.05)
+scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="Clouds" type="Sprite2D" parent="Parallax2D2"]
 texture = ExtResource("3_mph6t")
 centered = false
+offset = Vector2(-1232, 0)
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.1, 0.1)
+scroll_scale = Vector2(0.9, 0.9)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="land" type="Sprite2D" parent="Parallax2D3"]
 texture = ExtResource("4_e15ue")
 centered = false
+offset = Vector2(-1232, 0)
 
 [node name="Parallax2D4" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.05, 0.05)
+scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="Cloud Shadows" type="Sprite2D" parent="Parallax2D4"]
 texture = ExtResource("5_82ctm")
 centered = false
+offset = Vector2(-1232, 0)
 
 [node name="Parallax2D5" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.2, 0.2)
+scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallax2D5"]
 texture = ExtResource("6_epo3u")
 centered = false
+offset = Vector2(-1232, 0)
 
 [node name="Parallax2D6" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.3, 0.3)
+scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallax2D6"]
 texture = ExtResource("7_8ii1b")
 centered = false
+offset = Vector2(-1232, 0)
 
 [node name="Parallax2D7" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.4, 0.4)
+scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallax2D7"]
 texture = ExtResource("8_xgr47")
 centered = false
+offset = Vector2(-1232, 0)
 
 [node name="Parallax2D8" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.95, 0.95)
 repeat_size = Vector2(1232, 0)
+repeat_times = 4
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallax2D8"]
 texture = ExtResource("9_b5wv7")
 centered = false
+offset = Vector2(-1232, 0)

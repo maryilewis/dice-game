@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 const DUNGEON_VISUAL = preload("uid://cqelnplfpmwub")
 const EnemySnakey = preload("uid://blj8h2c3quyhk")

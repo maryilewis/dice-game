@@ -20,6 +20,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="Modal" type="PanelContainer"]
+top_level = true
 custom_minimum_size = Vector2(500, 300)
 anchors_preset = 8
 anchor_left = 0.5
