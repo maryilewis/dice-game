@@ -42,4 +42,18 @@ func voice_line(line: String):
 	%Speech.text = line
 	%Speech.show()
 	# TODO set timer to hide
-	
+
+var _squash = true
+var _squash_speed = .05
+func _process(delta):
+	print(%Sprite2D.scale.x)
+	if _squash:
+		%Sprite2D.scale.x -= delta * _squash_speed
+		%Sprite2D.scale.y += delta * _squash_speed
+		if %Sprite2D.scale.y > 1.03:
+			_squash = false
+	else:
+		%Sprite2D.scale.x += delta * _squash_speed
+		%Sprite2D.scale.y -= delta * _squash_speed
+		if %Sprite2D.scale.y < .97:
+			_squash = true

@@ -47,20 +47,21 @@ visible = false
 [node name="No" parent="Speech/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" index="2"]
 visible = false
 
-[node name="Sprite2D" type="TextureRect" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = -353.0
-offset_top = -159.0
-offset_right = 354.0
-offset_bottom = 158.0
+position = Vector2(0, 150)
 texture = ExtResource("2_us8be")
+centered = false
+offset = Vector2(-353, -317)
 
 [node name="Button" type="Button" parent="Sprite2D"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -353.0
+offset_top = -317.0
+offset_right = -353.0
+offset_bottom = -317.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_us8be")

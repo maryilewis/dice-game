@@ -104,7 +104,7 @@ func _close_ability_summary():
 		visible_ability_summary.queue_free()
 
 
-var cam_shift_amt = -200
+var cam_shift_amt = -400
 var cam_shift_time = .5
 
 func _on_end_turn_button_pressed():

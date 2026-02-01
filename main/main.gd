@@ -22,8 +22,8 @@ func _ready():
 	
 	
 	# TODO: Remove. here for testing purposes.
-	_on_instructions_modal_ok_pressed()
-	_on_map_selection_made("anything")
+	#_on_instructions_modal_ok_pressed()
+	#_on_map_selection_made("anything")
 
 
 func _on_instructions_modal_ok_pressed():

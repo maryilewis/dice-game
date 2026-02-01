@@ -18,6 +18,7 @@ repeat_size = Vector2(1232, 0)
 repeat_times = 4
 
 [node name="Sky" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(0, -81)
 texture = ExtResource("2_p2na5")
 centered = false
 offset = Vector2(-1232, 0)
@@ -28,6 +29,7 @@ repeat_size = Vector2(1232, 0)
 repeat_times = 4
 
 [node name="Clouds" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 100)
 texture = ExtResource("3_mph6t")
 centered = false
 offset = Vector2(-1232, 0)

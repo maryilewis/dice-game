@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv2jb61ljkhrv"]
+[gd_scene load_steps=10 format=3 uid="uid://bv2jb61ljkhrv"]
 
 [ext_resource type="Script" uid="uid://dr3bdbnfa0utr" path="res://shared ui elements/ability list item/ability_list_item.gd" id="1_ae7er"]
 [ext_resource type="Texture2D" uid="uid://6btq7grfxhtv" path="res://icons/rolling-dices.svg" id="2_hy4hf"]
@@ -23,6 +23,25 @@ border_width_bottom = 8
 border_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqvy0"]
+bg_color = Color(0.8745098, 0.8392157, 0.7921569, 1)
+border_width_bottom = 8
+border_color = Color(0.22352941, 0.08235294, 0.07450981, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxdic"]
+bg_color = Color(0.96862745, 0.69803923, 0.23137255, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spm5b"]
+bg_color = Color(0.8745098, 0.8392157, 0.7921569, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="AbilityListItem" type="PanelContainer"]
 anchors_preset = 5
@@ -112,5 +131,61 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.20784314)
 layout_mode = 2
+
+[node name="Alternate" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gqvy0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Alternate"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Alternate/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qxdic")
+
+[node name="MarginContainer" type="MarginContainer" parent="Alternate/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Alternate/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Alternate/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_hy4hf")
+
+[node name="Label" type="Label" parent="Alternate/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Alternate/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1/1"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Alternate/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_spm5b")
+
+[node name="MarginContainer" type="MarginContainer" parent="Alternate/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Alternate/VBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Alternate/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "description here"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
