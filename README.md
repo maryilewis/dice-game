@@ -1,19 +1,30 @@
-More yahtzee-like gameplay:
-* automatically get two full rerolls, or buy rerolls in between rounds
-* maybe have it be like rollcadium where it goes fight/restock/fight/restock
-* Have a LOT of options to get bonus points
+Normal challenge:
 
-- sum
-- 123, 234, 345
-- doubles
-- triples
-- evens
-- odds
-- 1s, 2s, 3s, 4s, 5s, 6s
-- high dice
+Roll (hand size)
+choose dice and re-roll, up to twice
+select and order (score size) dice to score
+Try to beat a number
 
-Each fight you get a subset of a yatzee card you are trying to fill out and a minimum number of points.
-Each round you roll 3 dice and get two rerolls
-You get a certain number of rounds and then the points are totaled
+Scoring
+- Dice values
+- Multiples: +1 for the first two, then +2, +3, +4
+- So 5 of a kind gets +11
 
+Passives:
+- roll more dice
+- multiples worth more
+- straights worth more
+- more rerolls per turn
+- expand hand size, expand score size
+- if you have no potions, get a random potion
+- increase prizes/prize options
+- first roll always contains a 6?
 
+Potions:
+- extra re-roll
+- change number (+1, -1, change value)
+- decrease number you need to beat / flat bonus
+- straights worth more this turn
+- multiples worth more this turn
+- extra turn after this one
+- escape non-boss battle
