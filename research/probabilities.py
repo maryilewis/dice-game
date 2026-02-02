@@ -1,28 +1,28 @@
 import itertools
 import statistics
 
+number_dice_rolled = 6
+number_dice_scored = 4
 min_straight_length = 3
 min_multiple_length = 2
 
 def generate_dice_possibilities(num_dice, sides=6):
     # Create a list for each die: [1, 2, ..., sides]
     die_sides = range(1, sides + 1)
-    
     # Use product to get the Cartesian product of the sides, N times
     all_rolls = list(itertools.product(die_sides, repeat=num_dice))
-    
     return all_rolls
 
 def find_optimal_score(dice_values, num_score=5):
     highest_value = 0
     best_arrangement = []
-    permutations=list(itertools.permutations(dice_values,5))
+    permutations=list(itertools.permutations(dice_values,num_score))
     for perm in permutations:
         value = find_score(perm[:num_score])
         if value > highest_value:
             highest_value = value
             best_arrangement = perm[:num_score]
-    print(highest_value, best_arrangement)
+    # print(highest_value, best_arrangement)
     return highest_value
 
 
@@ -75,16 +75,17 @@ def find_multiple_lengths(dice_values):
     return multiple_lengths
 
 
-all_possibilities = generate_dice_possibilities(5)
+all_possibilities = generate_dice_possibilities(number_dice_rolled)
+# print(all_possibilities)
 all_scores = []
 
 for possibility in all_possibilities:
-    score = find_optimal_score(possibility)
+    score = find_optimal_score(possibility, number_dice_scored)
     all_scores.append(score)
 
 print("Min: ", min(all_scores))
 print("Max: ", max(all_scores))
 print("Mean: ", statistics.mean(all_scores))
 
-print(find_score([1, 2, 2, 1, 3]))
-print(find_score([1, 1, 2, 3, 2]))
+# print(find_score([1, 2, 2, 1, 3]))
+# print(find_score([1, 1, 2, 3, 2]))
